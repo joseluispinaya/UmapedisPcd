@@ -5,10 +5,62 @@ const foto = document.getElementById('footo');
 
 $(document).ready(function () {
     //sendDataAjax();
+    cargarRoles();
     $(".content.invoice.camaraa").hide();
     //$(".content.invoice.selecc").hide();
 
 });
+
+function cargarPrue() {
+    //$("#cboRol").html("");
+
+    $.ajax({
+        type: "POST",
+        url: "frmUsuario.aspx/ObtenerRol",
+        data: {},
+        contentType: 'application/json; charset=utf-8',
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        },
+        success: function (data) {
+            if (data.d.estado) {
+                $.each(data.d.objeto, function (i, row) {
+                    if (row.Activo == true) {
+                        $("<option>").attr({ "value": row.Idrol }).text(row.NomRol).appendTo("#cboRol");
+                    }
+
+                })
+            }
+
+        }
+    });
+}
+
+function cargarRoles() {
+    $("#cboRol").html("");
+
+    $.ajax({
+        type: "POST",
+        url: "frmUsuario.aspx/ObtenerRol",
+        data: {},
+        contentType: 'application/json; charset=utf-8',
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        },
+        success: function (data) {
+            if (data.d.estado) {
+                $.each(data.d.objeto, function (i, row) {
+                    if (row.Activo == true) {
+                        $("<option>").attr({ "value": row.Idrol }).text(row.NomRol).appendTo("#cboRol");
+                    }
+
+                })
+            }
+            
+        }
+    });
+}
+
 
 let cameraStream;
 
