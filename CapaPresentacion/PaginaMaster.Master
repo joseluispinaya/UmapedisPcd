@@ -257,6 +257,7 @@
         <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 
         <script src="assets/js/app.js"></script>
+        <script src="assets/plugins/loadingoverlay/loadingoverlay.js"></script>
         <asp:ContentPlaceHolder ID="footer" runat="server"></asp:ContentPlaceHolder>
     </body>
 </html>

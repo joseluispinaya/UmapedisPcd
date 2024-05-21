@@ -247,6 +247,8 @@
     <Content Include="assets\plugins\jvectormap\jquery-jvectormap-us-aea-en.js" />
     <Content Include="assets\plugins\jvectormap\jquery-jvectormap-us-il-chicago-mill-en.js" />
     <Content Include="assets\plugins\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="assets\plugins\loadingoverlay\loadingoverlay.js" />
+    <Content Include="assets\plugins\loadingoverlay\loadingoverlay.min.js" />
     <Content Include="assets\plugins\moment\moment.js" />
     <Content Include="assets\plugins\morris\morris.css" />
     <Content Include="assets\plugins\morris\morris.min.js" />
@@ -340,21 +342,32 @@
     <Content Include="assets\plugins\summernote\summernote-bs4.min.js" />
     <Content Include="assets\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="assets\plugins\timepicker\bootstrap-timepicker.min.css" />
+    <Content Include="assets\style.css" />
     <Content Include="assets\toastr\toastr.min.css" />
     <Content Include="assets\toastr\toastr.min.js" />
     <Content Include="frmUsuario.aspx" />
     <Content Include="Imagenes\Sinfotop.jpg" />
+    <Content Include="IniciarSesion.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="js\frmUsuario.js" />
+    <Content Include="js\IniciarSesion.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuracion.cs" />
     <Compile Include="frmUsuario.aspx.cs">
       <DependentUpon>frmUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="frmUsuario.aspx.designer.cs">
       <DependentUpon>frmUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IniciarSesion.aspx.cs">
+      <DependentUpon>IniciarSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IniciarSesion.aspx.designer.cs">
+      <DependentUpon>IniciarSesion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
@@ -371,6 +384,7 @@
       <DependentUpon>PaginaMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidadesj.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\icons.css.map" />

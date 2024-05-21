@@ -57,23 +57,25 @@
                       <h4 class="m-t-0 m-b-30">Usuarios</h4>
                         <div class="row">
                             <div class="col-sm-2">
-                                <button id="btnNuevoRol" type="button" class="btn btn-sm btn-success">Nuevo</button>
+                                <button id="btnNuevoRol" type="button" class="btn btn-sm btn-success"><i class="fas fa-user-plus"></i> Nuevo</button>
                             </div>
                         </div>
                       <hr />
                         <div class="row mt-3">
                             <div class="col-sm-12">
+                                
                                 <table id="tbUsuario" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Rol</th>
-                                            <th>Usuario</th>
-                                            <th>Nombres</th>
-                                            <th>Correo</th>
-                                            <th>Estado</th>
+                                            <th>Id</th>
                                             <th>Foto</th>
-                                            <th></th>
+                                            <th>Rol</th>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Correo</th>
+                                            <th>Ocupacion</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -122,8 +124,8 @@
                                 <div class="form-group col-sm-6">
                                     <label for="cboEstado">Estado</label>
                                     <select class="form-control form-control-sm" id="cboEstado">
-                                        <option value="Activo">Activo</option>
-                                        <option value="Inactivo">Inactivo</option>
+                                        <option value="1">Activo</option>
+                                        <option value="0">No Activo</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-6">
@@ -170,7 +172,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-sm-12 text-center">
-                                        <img id="imgUsuarioM" src="Imagenes/Sinfotop.jpg" alt="Foto usuario" style="max-width: 120px; border-radius: 50%;" class="mx-auto">
+                                        <img id="imgUsuarioM" src="Imagenes/Sinfotop.jpg" alt="Foto usuario" style="height:150px; max-width:150px; border-radius: 50%;">
                                     </div>
                                 </div>
                             </section>
