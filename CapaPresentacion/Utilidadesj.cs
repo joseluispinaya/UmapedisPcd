@@ -30,6 +30,7 @@ namespace CapaPresentacion
         }
         #endregion
 
+        //genera claves
         public string GenerarClave()
         {
             string clave = Guid.NewGuid().ToString("N").Substring(0, 6);
