@@ -36,6 +36,15 @@ namespace CapaNegocio
             //    throw ex;
             //}
         }
+
+        public List<EAsociacion> ObtenerAsociacion()
+        {
+            return DTipos.getInstance().ObtenerAsociacion();
+        }
+        public List<ETipoDisca> ObtenerTiposDisca()
+        {
+            return DTipos.getInstance().ObtenerTiposDisca();
+        }
         public List<ERol> ObtenerRoles()
         {
             try

@@ -70,7 +70,7 @@ function enviaCco() {
             if (response.d.estado) {
                 swal("Mensaje", "Se envio sms a correo", "success")
             } else {
-                swal("oops!", "No se encontro el usuario", "warning")
+                swal("oops!", "Ocurrio un error intente mas tarde", "warning")
             }
         }
     });

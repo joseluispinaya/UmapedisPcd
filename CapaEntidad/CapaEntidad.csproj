@@ -41,7 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EAsociacion.cs" />
+    <Compile Include="EMeses.cs" />
+    <Compile Include="EPersonasDisca.cs" />
     <Compile Include="ERol.cs" />
+    <Compile Include="ETipoDisca.cs" />
+    <Compile Include="ETutor.cs" />
     <Compile Include="EUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Respuesta.cs" />

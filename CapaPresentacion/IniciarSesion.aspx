@@ -19,8 +19,8 @@
             <div class="login">
                 <div class="form">
                     <label for="chk" aria-hidden="true">Moto Repuesto</label>
-                    <input class="input" type="text" name="email" id="username" placeholder="Usuario"/>
-                    <input class="input" type="password" name="pswd" id="password" placeholder="Contraseña"/>
+                    <input class="input" type="text" name="email" id="username" placeholder="Usuario" value="manuel@yopmail.com"/>
+                    <input class="input" type="password" name="pswd" id="password" placeholder="Contraseña" value="aedf44"/>
                     <button type="button" id="btnIniciarSesion">Iniciar</button>
                 </div>
             </div>
