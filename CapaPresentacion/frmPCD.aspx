@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaster.Master" AutoEventWireup="true" CodeBehind="frmPCD.aspx.cs" Inherits="CapaPresentacion.frmPCD" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
+        .buttons-excel{
+            color: #fff !important;
+            background-color: #28a745 !important;
+            border-color: #28a745 !important;
+        }
         video{
             object-fit: cover;
             width: 140px !important;
@@ -86,10 +91,10 @@
                                         <th>Id</th>
                                         <th>Foto</th>
                                         <th>Asociacion</th>
-                                        <th>Discapacidad</th>
                                         <th>Nombres</th>
                                         <th>Apellidos</th>
-                                        <th>Nro CI</th>
+                                        <th>Tutor</th>
+                                        <th>Pago</th>
                                         <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -125,7 +130,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-3">
-                                <button id="btnGuardarCambios" type="button" class="btn btn-sm btn-primary">Guardar Cambios</button>
+                                <button id="btnGuardarCambiospcd" type="button" class="btn btn-sm btn-primary">Guardar Cambios</button>
                             </div>
                         </div>
                     </div>
@@ -268,7 +273,7 @@
         </div>
     </div>
 
-    <div class="row" id="nuevoRegistrosinTutor">
+    <%--<div class="row" id="nuevoRegistrosinTutor">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
@@ -278,7 +283,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="footer" runat="server">

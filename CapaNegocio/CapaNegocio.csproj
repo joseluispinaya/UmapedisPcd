@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NPersonasDisca.cs" />
     <Compile Include="NTipos.cs" />
     <Compile Include="NUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
