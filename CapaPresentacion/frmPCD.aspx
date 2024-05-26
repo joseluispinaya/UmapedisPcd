@@ -125,7 +125,7 @@
                                 <div class="checkbox checkbox-primary">
                                     <input id="checTutor" type="checkbox">
                                     <label for="checTutor">
-                                        Marcar Reg !
+                                        Marcar si tiene Tutor
                                     </label>
                                 </div>
                             </div>
@@ -222,17 +222,6 @@
                                                     </div>
                                                 </div>
                                             </section>
-                                            <%--<div class="form-group row">
-                                                <label for="staticEmail" class="col-sm-4 col-form-label col-form-label-sm">Seleccione Foto</label>
-                                                <div class="col-sm-8">
-                                                    <input type="file" id="txtFotopcd" accept="image/*" class="filestyle" data-buttonbefore="true">
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-sm-12 text-center">
-                                                    <img id="imgUsuarioPcd" src="Imagenes/Sinfotop.jpg" alt="Foto usuario" style="height: 120px; max-width: 120px; border-radius: 50%;">
-                                                </div>
-                                            </div>--%>
                                         </div>
                                     </div>
                                 </div>

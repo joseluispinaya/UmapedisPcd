@@ -345,6 +345,7 @@
     <Content Include="assets\style.css" />
     <Content Include="assets\toastr\toastr.min.css" />
     <Content Include="assets\toastr\toastr.min.js" />
+    <Content Include="frmEditarPcd.aspx" />
     <Content Include="frmPCD.aspx" />
     <Content Include="frmUsuario.aspx" />
     <Content Include="Imagenes\Sinfotop.jpg" />
@@ -352,6 +353,7 @@
     <Content Include="ImagePcd\verpdf1.png" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="Inicio.aspx" />
+    <Content Include="js\frmEditarPcd.js" />
     <Content Include="js\frmPCD.js" />
     <Content Include="js\frmUsuario.js" />
     <Content Include="js\IniciarSesion.js" />
@@ -360,6 +362,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuracion.cs" />
+    <Compile Include="frmEditarPcd.aspx.cs">
+      <DependentUpon>frmEditarPcd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmEditarPcd.aspx.designer.cs">
+      <DependentUpon>frmEditarPcd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmPCD.aspx.cs">
       <DependentUpon>frmPCD.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

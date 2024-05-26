@@ -56,13 +56,13 @@
                                             <label id="lblnroci"></label><br>
                                         </address>
                                     </div>
-                                    <div class="col-4 text-right">
+                                    <div class="col-4">
                                         <address>
                                             <strong>Asociacion:</strong>
                                             <label id="lblasociacion"></label><br>
                                             <strong>Tipo Disca:</strong>
                                             <label id="lbltipodis"></label><br>
-                                            <strong>NRO CI:</strong>
+                                            <strong>Porcentaje:</strong>
                                             <label id="lblporcentaje"></label>
                                         </address>
                                     </div>
@@ -223,6 +223,10 @@
                    if (response.d.estado) {
                        $("#lblnombrepcd").text(response.d.objeto.Nombres);
                        $("#lblapellido").text(response.d.objeto.Apellidos);
+                       $("#lblnroci").text(response.d.objeto.Ciperso);
+                       $("#lblasociacion").text(response.d.objeto.oAsociacion.Descripcion);
+                       $("#lbltipodis").text(response.d.objeto.oTipoDisca.Descripcion);
+                       $("#lblporcentaje").text(response.d.objeto.Porsentaje);
                        $('#imgpcd').attr('src', response.d.objeto.ImageFull);
                        /*$("#tbDetalles tbody").html("");*/
                    }

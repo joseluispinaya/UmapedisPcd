@@ -227,7 +227,17 @@ $("#tbPcd tbody").on("click", ".btn-editar", function (e) {
     }
 
     const model = table.row(filaSeleccionada).data();
-    console.log(model);
+    var url = 'frmEditarPcd.aspx?id=' + model.Idpersodisca;
+    // Tamaño de la nueva ventana
+    var width = 800;
+    var height = 600;
+
+    // Calcular la posición para centrar la ventana
+    var left = (screen.width / 2) - (width / 2);
+    var top = (screen.height / 2) - (height / 2);
+
+    window.open(url, '', 'height=' + height + ',width=' + width + ',scrollbars=0,location=1,toolbar=0,top=' + top + ',left=' + left);
+    //window.open(url, '', 'height=600,width=800,scrollbars=0,location=1,toolbar=0');
 })
 
 $("#tbPcd tbody").on("click", ".btn-eliminar", function (e) {
