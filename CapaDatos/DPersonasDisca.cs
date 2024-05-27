@@ -87,6 +87,51 @@ namespace CapaDatos
 
             return respuesta;
         }
+
+        public bool ActualizarPcd(EPersonasDisca personaDisca)
+        {
+            bool respuesta = false;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("ActualizarPersonaPCD", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@Idpersodisca", personaDisca.Idpersodisca);
+                        cmd.Parameters.AddWithValue("@Idasoci", personaDisca.Idasoci);
+                        cmd.Parameters.AddWithValue("@Idtipodisca", personaDisca.Idtipodisca);
+                        cmd.Parameters.AddWithValue("@Ciperso", personaDisca.Ciperso);
+                        cmd.Parameters.AddWithValue("@Codcarnetdisca", personaDisca.Codcarnetdisca);
+                        cmd.Parameters.AddWithValue("@Porsentaje", personaDisca.Porsentaje);
+                        cmd.Parameters.AddWithValue("@Nombres", personaDisca.Nombres);
+                        cmd.Parameters.AddWithValue("@Apellidos", personaDisca.Apellidos);
+                        cmd.Parameters.AddWithValue("@Sexo", personaDisca.Sexo);
+                        cmd.Parameters.AddWithValue("@Foto", personaDisca.Foto);
+                        cmd.Parameters.AddWithValue("@EstadoBono", personaDisca.EstadoBono);
+
+                        SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        respuesta = Convert.ToBoolean(outputParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar el PCD. Intente más tarde.", ex);
+            }
+
+            return respuesta;
+        }
+
         public List<EPersonasDisca> ObtenerPersonasPcd()
         {
             List<EPersonasDisca> rptLista = new List<EPersonasDisca>();

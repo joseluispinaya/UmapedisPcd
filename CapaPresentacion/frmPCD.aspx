@@ -79,7 +79,7 @@
     <div class="row" id="listaRegistrosRow">
         <div class="col-sm-12">
             <div class="card">
-                <div class="card-body">
+                <div id="overlay" class="card-body">
                     <h4 class="m-b-30 m-t-0">Lista de Registros PCD</h4>
 
                     <div class="row mt-3">
@@ -262,17 +262,51 @@
         </div>
     </div>
 
-    <%--<div class="row" id="nuevoRegistrosinTutor">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="m-t-0">Nuevo Registro Sin Tutor</h4>
+    <div class="modal fade bs-example-modal-lg" id="modalroltut" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title m-0" id="myLargeModalLabel">Tutor</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <input id="txtidtutoo" class="model" name="IdTutor" value="0" type="hidden" />
+                    <input id="txtidtuPcd" class="model" name="Idpcdd" value="0" type="hidden" />
+                    <div class="form-group row">
+                        <label for="txtcituoo" class="col-sm-3 col-form-label col-form-label-sm">Nro CI</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control input-sm model" id="txtcituoo" name="Nro ci">
+                        </div>
+                    </div>
 
-                    <div style="height: 200px"></div>
+                    <div class="form-group row">
+                        <label for="txtNomAptut" class="col-sm-3 col-form-label col-form-label-sm">Nombre Ap.</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control input-sm model" id="txtNomAptut" name="Nombres">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="txtParentetutt" class="col-sm-3 col-form-label col-form-label-sm">Parentesco</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control input-sm model" id="txtParentetutt" name="Parentesco">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="txtCeltutoo" class="col-sm-3 col-form-label col-form-label-sm">Celular</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control input-sm model" id="txtCeltutoo" name="Celular">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button id="btnGuardarTtuto" type="button" class="btn btn-sm btn-primary">Guardar Cambios</button>
                 </div>
             </div>
         </div>
-    </div>--%>
+    </div>
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="footer" runat="server">

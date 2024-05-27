@@ -2,12 +2,16 @@
 const videopm = document.getElementById('videoapcdmo');
 const canvaspm = document.getElementById('canvasapcdmo');
 const fotopm = document.getElementById('footopcdmo');
-
+let cameraStreampm;
+let isCameraImagepm = false;
 
 $(document).ready(function () {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const idpersonal = urlParams.get('id');
+
+    $(".content.invoice.camaraapcdmo").hide();
+    //$(".content.invoice.selecc").hide();
 
     cargarAsociacion();
     cargarTipodis();
@@ -105,32 +109,27 @@ function obtenerDetalle($idpersonal) {
     });
 }
 
-
-let cameraStreampm;
-
 function mostrarCamara() {
-    //var video = document.getElementById('videoa');
-
     navigator.mediaDevices.getUserMedia({ audio: false, video: true })
         .then(stream => {
             cameraStreampm = stream;
             videopm.srcObject = stream;
+            isCameraImagepm = true;
+            $('#txtFotopcdmo').val("");
         })
         .catch(error => {
             console.error('Error accessing the camera:', error);
-            swal("Mensaje", "Verifique conexion de la Camara", "warning");
+            swal("Mensaje", "Verifique conexión de la cámara", "warning");
         });
 }
 
 function detenerCamara() {
     if (cameraStreampm) {
-        const tracks = cameraStreampm.getTracks(); // Obtener las pistas de la transmisión de la cámara
-        tracks.forEach(track => {
-            track.stop(); // Detener cada pista de la transmisión
-        });
-        //foto.setAttribute("src", "Imagenes/Sinfotop.jpg");
+        cameraStreampm.getTracks().forEach(track => track.stop());
+        cameraStreampm = null;
     }
 }
+
 
 function mostrarImagenSeleccionada(input) {
     if (input.files && input.files[0]) {
@@ -158,14 +157,18 @@ $('#btntomarfotopcdmo').on('click', function () {
 })
 
 $('#btnselectfotopcdmo').on('click', function () {
-
     detenerCamara();
-    //foto.setAttribute("src", "Imagenes/Sinfotop.jpg");
     $(".content.invoice.camaraapcdmo").hide();
     $(".content.invoice.seleccpcdmo").show();
+    isCameraImagepm = false;
+
+    // Limpiar canvas y resetear imagen
+    const context = canvaspm.getContext("2d");
+    context.clearRect(0, 0, canvaspm.width, canvaspm.height);
+    fotopm.setAttribute("src", "");
 })
 
-let isCameraImagepm = false;
+
 
 $('#btncapturarpcdmo').on('click', function () {
 
@@ -178,23 +181,87 @@ $('#btncapturarpcdmo').on('click', function () {
     const data = canvaspm.toDataURL("image/jpeg");
     fotopm.setAttribute("src", data);
     isCameraImagepm = true;
-    document.getElementById('txtFotopcdmo').value = "";
+    $('#txtFotopcdmo').val("");
+    //isCameraImagepm = true;
+    //document.getElementById('txtFotopcdmo').value = "";
 })
 
+
+function base64ToByteArray(base64Data) {
+    const binaryString = window.atob(base64Data);
+    const len = binaryString.length;
+    const bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+    }
+    return bytes;
+}
+
+
 function editarDataAjax() {
-    var request = {
-        oPersonapcd: {
-            Idpersodisca: parseInt($("#txtIdpcdmo").val()),
-            Nombres: $("#txtNombrespcdmo").val(),
-            Apellidos: $("#txtApellidospcdmo").val()
-        }
+    const fileInput = document.getElementById('txtFotopcdmo');
+    const file = fileInput.files[0];
+
+    var modelo = {
+        Idpersodisca: parseInt($("#txtIdpcdmo").val()),
+        Ciperso: $("#txtcipcdmo").val(),
+        Codcarnetdisca: $("#txtNrocarnetdismo").val(),
+        Porsentaje: $("#txtPorsentajemo").val(),
+        Nombres: $("#txtNombrespcdmo").val(),
+        Apellidos: $("#txtApellidospcdmo").val(),
+        Sexo: $("#cbosexomo").val(),
+        Idtipodisca: $("#cboTipoDiscamo").val(),
+        Idasoci: $("#cboAsociamo").val(),
     }
 
+    if (file) {
+        var maxSize = 2 * 1024 * 1024; // 2 MB en bytes
+        if (file.size > maxSize) {
+            swal("Error", "La imagen seleccionada es demasiado grande 2 Mb permitido.", "error");
+            return;
+        }
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var arrayBuffer = e.target.result;
+            var bytes = new Uint8Array(arrayBuffer);
+
+            var request = {
+                oPersonapcd: modelo,
+                imageBytes: Array.from(bytes)
+            };
+            //console.log("envio file");
+            sendDataToServer(request);
+        };
+        reader.readAsArrayBuffer(file);
+    } else if (isCameraImagepm) {
+                const dataURL = canvaspm.toDataURL("image/jpeg");
+                const base64Data = dataURL.replace(/^data:image\/(png|jpeg);base64,/, "");
+                const byteArray = base64ToByteArray(base64Data);
+
+                var request = {
+                    oPersonapcd: modelo,
+                    imageBytes: Array.from(byteArray)
+                };
+                //console.log("envio camara");
+                sendDataToServer(request);
+    } else {
+        var request = {
+            oPersonapcd: modelo,
+            imageBytes: null
+        };
+        //console.log("envio sin imagen");
+        sendDataToServer(request);
+    }
+}
+
+
+function sendDataToServer(request) {
     $.ajax({
         type: "POST",
         url: "frmEditarPcd.aspx/EditarPcd",
         data: JSON.stringify(request),
-        contentType: 'application/json; charset=utf-8',
+        contentType: "application/json; charset=utf-8",
         dataType: "json",
         beforeSend: function () {
             // Mostrar overlay de carga antes de enviar la solicitud
@@ -203,18 +270,15 @@ function editarDataAjax() {
         success: function (response) {
             $.LoadingOverlay("hide");
             if (response.d.Estado) {
-                //swal("Mensaje", "Actualización correcta.", "success");
                 swal("Mensaje", response.d.Mensage, response.d.Valor);
                 setTimeout(function () {
                     window.opener.location.reload();
                     window.close();
                 }, 3000);
-
                 //window.opener.location.reload();
                 //window.close();
             } else {
                 swal("Mensaje", response.d.Mensage, "error");
-                //swal("Mensaje", "Ocurrió un error", "warning");
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -225,5 +289,30 @@ function editarDataAjax() {
 }
 
 $('#btnGuardarCambiospcdmo').on('click', function () {
-    editarDataAjax();
+
+    var camposvacios = false;
+    var fields = $(".model").serializeArray();
+
+    $.each(fields, function (i, field) {
+        if (!field.value) {
+            camposvacios = true;
+            return false;
+        }
+    });
+
+    if (!camposvacios) {
+
+        if (parseInt($("#txtIdpcdmo").val()) == 0) {
+
+            swal("Mensaje!", "Ocurrio un error Con Id del PCD Cierre e intente mas tarde", "error")
+
+        } else {
+            editarDataAjax();
+            //registerDataAjaxOpc();
+        }
+        
+    } else {
+        swal("Mensaje!", "Es necesario completar todos los campos de texto para Actualizar", "warning")
+    }
+
 });

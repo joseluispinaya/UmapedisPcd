@@ -121,7 +121,7 @@
                                 <div class="form-group text-center">
                                     <p>Seccion de Imagen</p>
                                 </div>
-                                <section class="content invoice camaraapcdmo" style="display: none;">
+                                <section class="content invoice camaraapcdmo">
                                     <div class="row">
                                         <div class="col-sm-6 text-center">
                                             <div class="video-wrap">

@@ -131,5 +131,48 @@ namespace CapaPresentacion
             else
                 return new Respuesta<EPersonasDisca>() { estado = false, objeto = null };
         }
+
+        [WebMethod]
+        public static Respuesta<ETutor> ObtenerTutorP(int IdTutor)
+        {
+            List<ETutor> Lista = NTutor.getInstance().ObtenerTutores();
+            var items = Lista.FirstOrDefault(x => x.Idtutor == IdTutor);
+
+            if (items != null)
+                return new Respuesta<ETutor>() { estado = true, objeto = items };
+            else
+                return new Respuesta<ETutor>() { estado = false, objeto = null };
+        }
+
+        [WebMethod]
+        public static RespuestaZ<bool> GuardarTutor(ETutor oTutor, int Idpcd)
+        {
+            try
+            {
+                //EUsuario obj = new EUsuario
+                ETutor obj = new ETutor
+                {
+                    Idtutor = oTutor.Idtutor,
+                    Ciapoderado = oTutor.Ciapoderado,
+                    Nombres = oTutor.Nombres,
+                    Parentesco = oTutor.Parentesco,
+                    Celular = oTutor.Celular
+                };
+
+                bool Respuesta = true;
+                var respuesta = new RespuestaZ<bool>
+                {
+                    Estado = Respuesta,
+                    Mensage = Respuesta ? "Tutor Registrado correctamente" : "Ocurrio un error intente mas tarde",
+                    Valor = Respuesta ? "success" : "warning"
+                };
+
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+                return new RespuestaZ<bool> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message };
+            }
+        }
     }
 }

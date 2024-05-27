@@ -236,7 +236,17 @@ $("#tbPcd tbody").on("click", ".btn-editar", function (e) {
     var left = (screen.width / 2) - (width / 2);
     var top = (screen.height / 2) - (height / 2);
 
-    window.open(url, '', 'height=' + height + ',width=' + width + ',scrollbars=0,location=1,toolbar=0,top=' + top + ',left=' + left);
+    $("#overlay").LoadingOverlay("show");
+    var popup = window.open(url, '', 'height=' + height + ',width=' + width + ',scrollbars=0,location=1,toolbar=0,top=' + top + ',left=' + left);
+
+    var timer = setInterval(function () {
+        if (popup.closed) {
+            clearInterval(timer);
+            $("#overlay").LoadingOverlay("hide");
+        }
+    }, 500);
+
+    //window.open(url, '', 'height=' + height + ',width=' + width + ',scrollbars=0,location=1,toolbar=0,top=' + top + ',left=' + left);
     //window.open(url, '', 'height=600,width=800,scrollbars=0,location=1,toolbar=0');
 })
 
@@ -263,7 +273,16 @@ $("#tbPcd tbody").on("click", ".btn-agregar-tutor", function (e) {
     }
 
     const model = table.row(filaSeleccionada).data();
-    console.log(model);
+
+    $("#txtidtutoo").val("0");
+    $("#txtidtuPcd").val(model.Idpersodisca);
+    $("#txtcituoo").val("");
+    $("#txtNomAptut").val("");
+    $("#txtParentetutt").val("");
+    $("#txtCeltutoo").val("");
+
+    $("#modalroltut").modal("show");
+    //console.log(model);
 })
 
 $("#tbPcd tbody").on("click", ".btn-editar-tutor", function (e) {
@@ -276,8 +295,42 @@ $("#tbPcd tbody").on("click", ".btn-editar-tutor", function (e) {
     }
 
     const model = table.row(filaSeleccionada).data();
-    console.log(model);
+    obtenerDetalleTutt(model.Idtutor);
+    $("#modalroltut").modal("show");
+    //console.log(model);
 })
+
+function obtenerDetalleTutt($idpersonal) {
+    var request = {
+        IdTutor: $idpersonal,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "frmPCD.aspx/ObtenerTutorP",
+        data: JSON.stringify(request),
+        dataType: "json",
+        contentType: 'application/json; charset=utf-8',
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        },
+        success: function (data) {
+            if (data.d.estado) {
+                $("#txtidtutoo").val(data.d.objeto.Idtutor);
+                $("#txtcituoo").val(data.d.objeto.Ciapoderado);
+                $("#txtNomAptut").val(data.d.objeto.Nombres);
+                $("#txtParentetutt").val(data.d.objeto.Parentesco);
+                $("#txtCeltutoo").val(data.d.objeto.Celular);
+
+            } else {
+                swal("Mensaje", "No se encontró el PCD. El formulario se cerrará.", "warning");
+            }
+        }
+    });
+}
+
+
+
 
 let isTutore = false;
 

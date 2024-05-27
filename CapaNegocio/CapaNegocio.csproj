@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="NPersonasDisca.cs" />
     <Compile Include="NTipos.cs" />
+    <Compile Include="NTutor.cs" />
     <Compile Include="NUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

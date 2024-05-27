@@ -27,6 +27,11 @@ namespace CapaNegocio
         {
             return DPersonasDisca.getInstance().RegistrarPCD(personaDisca);
         }
+
+        public bool ActualizarPcd(EPersonasDisca personaDisca)
+        {
+            return DPersonasDisca.getInstance().ActualizarPcd(personaDisca);
+        }
         public List<EPersonasDisca> ObtenerPersonasPcd()
         {
             return DPersonasDisca.getInstance().ObtenerPersonasPcd();
