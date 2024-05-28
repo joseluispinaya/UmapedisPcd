@@ -6,20 +6,11 @@
             background-color: #28a745 !important;
             border-color: #28a745 !important;
         }
-        /*.video-wra {
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
+         @media print {
+            .hidden-print {
+                display: none !important;
+            }
         }
-        .video {
-            object-fit: cover !important;
-            width: 100px !important;
-            height: 100px !important;
-        }
-        .photo {
-            width: 100px !important;
-            height: 100px !important;
-        }*/
         see{
             display: flex;
             margin: 0 auto;
@@ -83,6 +74,16 @@
                                 </table>
                             </div>
                         </div>
+                      <hr />
+                      <div class="hidden-print">
+                          <div class="float-right">
+                              <%--<a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i></a>--%>
+                              <button type="button" id="btnImprimirusu" class="btn btn-success waves-effect waves-light">
+                                <i class="fa fa-print"></i> Imprimir
+                            </button>
+                              <a href="#" class="btn btn-primary waves-effect waves-light">Send</a>
+                          </div>
+                      </div>
                   </div>
                 </div>
             </div>

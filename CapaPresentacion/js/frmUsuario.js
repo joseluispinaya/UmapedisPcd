@@ -16,6 +16,8 @@ const video = document.getElementById('videoa');
 const canvas = document.getElementById('canvasa');
 const foto = document.getElementById('footo');
 
+//const espacioArri = document.getElementById('ocultar');
+
 $(document).ready(function () {
     //sendDataAjax();
     dtUsuarios();
@@ -676,3 +678,11 @@ $('#btnGuardarCambios').on('click', function () {
         editDataAjaxOpc();
     }
 })
+
+$('#btnImprimirusu').on('click', function () {
+
+    $('#ocultar').hide();
+    window.print();
+    $('#ocultar').show();
+    //const espacioArri = document.getElementById('ocultar');
+});

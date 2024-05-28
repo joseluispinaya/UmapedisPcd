@@ -131,6 +131,18 @@ namespace CapaPresentacion
             else
                 return new Respuesta<EPersonasDisca>() { estado = false, objeto = null };
         }
+        //para report
+        [WebMethod]
+        public static Respuesta<EPersonasDisca> ObtenerDetaRpt(string Ncip)
+        {
+            List<EPersonasDisca> Lista = NPersonasDisca.getInstance().ObtenerPersonasPcd();
+            var items = Lista.FirstOrDefault(x => x.Ciperso == Ncip);
+
+            if (items != null)
+                return new Respuesta<EPersonasDisca>() { estado = true, objeto = items };
+            else
+                return new Respuesta<EPersonasDisca>() { estado = false, objeto = null };
+        }
 
         [WebMethod]
         public static Respuesta<ETutor> ObtenerTutorP(int IdTutor)
@@ -149,17 +161,21 @@ namespace CapaPresentacion
         {
             try
             {
-                //EUsuario obj = new EUsuario
+                if (Idpcd == 0)
+                {
+                    return new RespuestaZ<bool>() { Estado = false, Mensage = "No se encontro el PCD a Relacionar" };
+                }
                 ETutor obj = new ETutor
                 {
-                    Idtutor = oTutor.Idtutor,
+                    //Idtutor = oTutor.Idtutor,
                     Ciapoderado = oTutor.Ciapoderado,
                     Nombres = oTutor.Nombres,
                     Parentesco = oTutor.Parentesco,
                     Celular = oTutor.Celular
                 };
 
-                bool Respuesta = true;
+                bool Respuesta = NTutor.getInstance().RegistrarTutor(Idpcd, obj);
+                //bool Respuesta = true;
                 var respuesta = new RespuestaZ<bool>
                 {
                     Estado = Respuesta,
@@ -171,7 +187,7 @@ namespace CapaPresentacion
             }
             catch (Exception ex)
             {
-                return new RespuestaZ<bool> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message };
+                return new RespuestaZ<bool> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message, Valor = "error" };
             }
         }
     }

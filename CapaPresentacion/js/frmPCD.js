@@ -10,7 +10,7 @@ $(document).ready(function () {
     dtObtenerPcd();
     cargarAsociacion();
     cargarTipodis();
-    //$('#listaRegistrosRow').hide();
+    $('#historialpcdp').hide();
     $('#nuevoRegistroRow').hide();
     //$('#nuevoRegistrosinTutor').hide();
 
@@ -182,7 +182,7 @@ function limpiarText() {
 $('#btnListaPcd').on('click', function () {
     $('#listaRegistrosRow').show();
     $('#nuevoRegistroRow').hide();
-    //$('#nuevoRegistrosinTutor').hide();
+    $('#historialpcdp').hide();
     
 })
 
@@ -190,15 +190,15 @@ $('#btnNuevore').on('click', function () {
     limpiarText();
     $('#nuevoRegistroRow').show();
     $('#listaRegistrosRow').hide();
-    //$('#nuevoRegistrosinTutor').hide();
+    $('#historialpcdp').hide();
 
 })
 
-$('#btnNuevoSintuto').on('click', function () {
-    swal("Mensaje", "Falta Implementar funcionalidad", "warning");
-    //$('#nuevoRegistrosinTutor').show();
-    //$('#listaRegistrosRow').hide();
-    //$('#nuevoRegistroRow').hide();
+$('#btnKardex').on('click', function () {
+    //swal("Mensaje", "Falta Implementar funcionalidad", "warning");
+    $('#historialpcdp').show();
+    $('#listaRegistrosRow').hide();
+    $('#nuevoRegistroRow').hide();
 })
 
 $("#tbPcd tbody").on("click", ".btn-detalle", function (e) {
@@ -263,6 +263,8 @@ $("#tbPcd tbody").on("click", ".btn-eliminar", function (e) {
     console.log(model);
 })
 
+//funciones y acciones para tutor
+
 $("#tbPcd tbody").on("click", ".btn-agregar-tutor", function (e) {
     e.preventDefault();
     let filaSeleccionada;
@@ -274,6 +276,7 @@ $("#tbPcd tbody").on("click", ".btn-agregar-tutor", function (e) {
 
     const model = table.row(filaSeleccionada).data();
 
+    $("#lblnomcompcd").text(model.Nombres + " " + model.Apellidos);
     $("#txtidtutoo").val("0");
     $("#txtidtuPcd").val(model.Idpersodisca);
     $("#txtcituoo").val("");
@@ -282,7 +285,7 @@ $("#tbPcd tbody").on("click", ".btn-agregar-tutor", function (e) {
     $("#txtCeltutoo").val("");
 
     $("#modalroltut").modal("show");
-    //console.log(model);
+    
 })
 
 $("#tbPcd tbody").on("click", ".btn-editar-tutor", function (e) {
@@ -295,8 +298,10 @@ $("#tbPcd tbody").on("click", ".btn-editar-tutor", function (e) {
     }
 
     const model = table.row(filaSeleccionada).data();
+    $("#lblnomcompcd").text(model.Nombres + " " + model.Apellidos);
+    $("#txtidtuPcd").val("0");
     obtenerDetalleTutt(model.Idtutor);
-    $("#modalroltut").modal("show");
+    //$("#modalroltut").modal("show");
     //console.log(model);
 })
 
@@ -321,16 +326,68 @@ function obtenerDetalleTutt($idpersonal) {
                 $("#txtNomAptut").val(data.d.objeto.Nombres);
                 $("#txtParentetutt").val(data.d.objeto.Parentesco);
                 $("#txtCeltutoo").val(data.d.objeto.Celular);
-
+                $("#modalroltut").modal("show");
             } else {
-                swal("Mensaje", "No se encontró el PCD. El formulario se cerrará.", "warning");
+                swal("Mensaje", "No se encontró el PCD.", "warning");
             }
         }
     });
 }
 
+function sendAgregarTutor() {
 
+    var request = {
+        oTutor: {
+            Ciapoderado: $("#txtcituoo").val(),
+            Nombres: $("#txtNomAptut").val(),
+            Parentesco: $("#txtParentetutt").val(),
+            Celular: $("#txtCeltutoo").val()
+        },
+        Idpcd: parseInt($("#txtidtuPcd").val())
+    };
 
+    $.ajax({
+        type: "POST",
+        url: "frmPCD.aspx/GuardarTutor",
+        data: JSON.stringify(request),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        beforeSend: function () {
+            // Mostrar overlay de carga antes de enviar la solicitud
+            $(".modal-body").LoadingOverlay("show");
+        },
+        success: function (response) {
+            $(".modal-body").LoadingOverlay("hide");
+            if (response.d.Estado) {
+                $('#modalroltut').modal('hide');
+                //swal("Mensaje", "Se Actualizo de manera correcta", "success")
+                swal("Mensaje", response.d.Mensage, response.d.Valor);
+                dtObtenerPcd();
+            } else {
+                //swal("Mensaje", "No se pudo Actualizar el usuario", "warning")
+                swal("Mensaje", response.d.Mensage, response.d.Valor);
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            $(".modal-body").LoadingOverlay("hide");
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        }
+
+    });
+}
+
+$('#btnGuardarTtuto').on('click', function () {
+
+    if (parseInt($("#txtidtutoo").val()) == 0) {
+
+        sendAgregarTutor();
+        //registerDataAjaxOpc();
+    } else {
+        swal("Mensaje!", "Ocurrio un error Con Id del PCD Cierre e intente mas tarde", "error")
+    }
+
+});
+//fin metodos y acciones de tutor
 
 let isTutore = false;
 
@@ -531,3 +588,42 @@ $('#btnGuardarCambiospcd').on('click', function () {
 
     registerDataAjaxOpc();
 })
+
+$('#btnBuscarpcd').on('click', function () {
+
+    var request = {
+        Ncip: $("#txtcipcdHis").val().trim()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "frmPCD.aspx/ObtenerDetaRpt",
+        data: JSON.stringify(request),
+        dataType: "json",
+        contentType: 'application/json; charset=utf-8',
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        },
+        success: function (data) {
+            if (data.d.estado) {
+                //$("#lblnomcompcd").text(model.Nombres + " " + model.Apellidos);
+                $("#imghistopot").attr("src", data.d.objeto.ImageFull);
+                $("#rptname").text(data.d.objeto.Nombres);
+                $("#rptapelli").text(data.d.objeto.Apellidos);
+                $('#mostrarhiev').show();
+            } else {
+                swal("Mensaje", "No se encontró el PCD.", "warning");
+            }
+        }
+    });
+});
+
+$('#btnImprimirhipcde').on('click', function () {
+
+    $('#ocultar').hide();
+    $('#menupcd').hide();
+    window.print();
+    $('#ocultar').show();
+    $('#menupcd').show();
+    //const espacioArri = document.getElementById('ocultar');
+});

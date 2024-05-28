@@ -23,6 +23,10 @@ namespace CapaNegocio
         }
         #endregion
 
+        public bool RegistrarTutor(int idpersodisca, ETutor oETutor)
+        {
+            return DTutor.getInstance().RegistrarTutor(idpersodisca, oETutor);
+        }
         public List<ETutor> ObtenerTutores()
         {
             return DTutor.getInstance().ObtenerTutores();

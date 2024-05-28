@@ -21,13 +21,21 @@
             width: 140px;
             height: 110px;
         }
+        #cardhi {
+            border: 2px solid #36af51 !important;
+        }
+        @media print {
+            #omitirhisb {
+                display: none !important;
+            }
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
     Panel Personas PCD
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
-    <div class="row">
+    <div class="row" id="menupcd">
         <div class="col-sm-6 col-lg-3">
             <div class="card text-center">
                 <div class="card-heading">
@@ -262,6 +270,77 @@
         </div>
     </div>
 
+<!-- ========== Contenedores ========== -->
+    <div class="row" id="historialpcdp">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-horizontal m-b-10" id="omitirhisb">
+
+                        <div class="form-group row m-b-0">
+                            <div class="col-sm-3">
+                                <h4 class="m-b-0 m-t-0">Historial PCD</h4>
+                            </div>
+
+                            <label for="inputPassh" class="col-sm-2 control-label text-right">Ingrse CI</label>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control input-sm" id="txtcipcdHis" name="Nro ci">
+                            </div>
+                            <div class="col-sm-5">
+                                <button id="btnBuscarpcd" type="button" class="btn btn-sm btn-success">Buscar</button>
+                                <button id="btnImprimirhipcde" type="button" class="btn btn-sm btn-primary">
+                                    <i class="fa fa-print"></i> Imprimir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="m-b-10 m-t-5" />
+                    <div class="row" id="mostrarhiev" style="display: none;">
+                        <div class="col-md-4  offset-md-4">
+                            <div class="card" id="cardhi">
+                                <div class="card-body user-card">
+                                    <div class="media-main">
+                                        <a class="float-left" href="#">
+                                            <img id="imghistopot" class="thumb-lg rounded-circle" src="assets/images/users/avatar-2.jpg" alt="">
+                                        </a>
+                                        <div class="info pl-3">
+                                            <h4 class="mt-3" id="rptname">Pauline I. Bird</h4>
+                                            <p class="text-muted" id="rptapelli">Family Member</p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                    <p class="text-muted info-text">
+                                        Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                                    </p>
+                                    <hr>
+                                    <ul class="social-links list-inline m-b-0">
+                                        <li class="list-inline-item">
+                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Twitter"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="1234567890"><i class="fas fa-phone"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="@skypename"><i class="fab fa-skype"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="email@email.com"><i class="far fa-envelope"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- card-body -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade bs-example-modal-lg" id="modalroltut" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -272,6 +351,12 @@
                 <div class="modal-body">
                     <input id="txtidtutoo" class="model" name="IdTutor" value="0" type="hidden" />
                     <input id="txtidtuPcd" class="model" name="Idpcdd" value="0" type="hidden" />
+                    <div class="form-group row">
+                        <label for="lblnomcompcd" class="col-sm-3 col-form-label col-form-label-sm">Nombre PCD:</label>
+                        <div class="col-sm-9">
+                            <label class="form-control input-sm model" readonly="readonly" id="lblnomcompcd"></label>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label for="txtcituoo" class="col-sm-3 col-form-label col-form-label-sm">Nro CI</label>
                         <div class="col-sm-9">

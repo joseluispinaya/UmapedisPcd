@@ -177,7 +177,7 @@
                 <!-- Start content -->
                 <div class="content">
 
-                    <div class="">
+                    <div class="" id="ocultar">
                         <div class="page-header-title">
                             <h4 class="page-title">
                                 <asp:ContentPlaceHolder ID="titulo" runat="server">
