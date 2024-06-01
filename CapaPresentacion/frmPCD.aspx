@@ -296,45 +296,137 @@
                     </div>
                     <hr class="m-b-10 m-t-5" />
                     <div class="row" id="mostrarhiev" style="display: none;">
-                        <div class="col-md-4  offset-md-4">
-                            <div class="card" id="cardhi">
-                                <div class="card-body user-card">
-                                    <div class="media-main">
-                                        <a class="float-left" href="#">
-                                            <img id="imghistopot" class="thumb-lg rounded-circle" src="assets/images/users/avatar-2.jpg" alt="">
-                                        </a>
-                                        <div class="info pl-3">
-                                            <h4 class="mt-3" id="rptname">Pauline I. Bird</h4>
-                                            <p class="text-muted" id="rptapelli">Family Member</p>
+                        <div class="col-sm-5">
+                            <div class="row">
+                                <!-- ========== <div class="col-md-4  offset-md-4"> ========== -->
+                                <div class="col-sm-12">
+                                    <div class="card" id="cardhi">
+                                        <div class="card-body user-card">
+                                            <div class="media-main">
+                                                <a class="float-left" href="#">
+                                                    <img id="imghistopot" class="thumb-lg rounded-circle" src="assets/images/users/avatar-2.jpg" alt="">
+                                                </a>
+                                                <div class="info pl-3">
+                                                    <h4 class="mt-3" id="rptname">Pauline I. Bird</h4>
+                                                    <p class="text-muted" id="rptapelli">Family Member</p>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="row m-b-0 m-t-20">
+                                                <div class="col-4 text-right">
+                                                    <address>
+                                                        <strong>Nro CI:</strong><br>
+                                                        <strong>Nro Cred:</strong><br>
+                                                        <strong>Porcentaje:</strong><br>
+                                                        <strong>Asociacion:</strong><br>
+                                                        <strong>Discapacidad:</strong><br>
+                                                        <strong>Tutor:</strong>
+                                                    </address>
+                                                </div>
+                                                <div class="col-8">
+                                                    <address>
+                                                        <strong>Shipped To:</strong><br>
+                                                        Kenny Rigdon<br>
+                                                        1234 Main<br>
+                                                        Apt. 4B<br>
+                                                        Springfield, ST 54321
+                                                    </address>
+                                                </div>
+                                            </div>
+                                            <%--<p class="text-muted info-text">
+                                                Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                                            </p>--%>
+                                            <hr>
+                                            <ul class="social-links list-inline m-b-0">
+                                                <li class="list-inline-item">
+                                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Twitter"><i class="fab fa-twitter"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="1234567890"><i class="fas fa-phone"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="@skypename"><i class="fab fa-skype"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="email@email.com"><i class="far fa-envelope"></i></a>
+                                                </li>
+                                            </ul>
                                         </div>
+                                        <!-- card-body -->
                                     </div>
-                                    <div class="clearfix"></div>
-
-                                    <p class="text-muted info-text">
-                                        Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
-                                    </p>
-                                    <hr>
-                                    <ul class="social-links list-inline m-b-0">
-                                        <li class="list-inline-item">
-                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Twitter"><i class="fab fa-twitter"></i></a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="1234567890"><i class="fas fa-phone"></i></a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="@skypename"><i class="fab fa-skype"></i></a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="email@email.com"><i class="far fa-envelope"></i></a>
-                                        </li>
-                                    </ul>
                                 </div>
-                                <!-- card-body -->
                             </div>
                         </div>
+                        <div class="col-sm-7">
+                            <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title text-dark m-0"><strong>Detalle pago bono</strong></h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <td><strong>Gestion</strong></td>
+                                            <td class="text-center"><strong>Monto</strong></td>
+                                            <td class="text-center"><strong>Cant Pagos</strong>
+                                            </td>
+                                            <td class="text-right"><strong>Total</strong></td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                        <tr>
+                                            <td>2022</td>
+                                            <td class="text-center">250 Bs</td>
+                                            <td class="text-center">8</td>
+                                            <td class="text-right">2000 Bs</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2023</td>
+                                            <td class="text-center">250 Bs</td>
+                                            <td class="text-center">8</td>
+                                            <td class="text-right">2000 Bs</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2024</td>
+                                            <td class="text-center">250 Bs</td>
+                                            <td class="text-center">8</td>
+                                            <td class="text-right">2000 Bs</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="thick-line"></td>
+                                            <td class="thick-line"></td>
+                                            <td class="thick-line text-center">
+                                                <strong>Subtotal</strong></td>
+                                            <td class="thick-line text-right">6000 Bs</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="no-line"></td>
+                                            <td class="no-line"></td>
+                                            <td class="no-line text-center">
+                                                <strong>Descuento</strong></td>
+                                            <td class="no-line text-right">0.0 Bs</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="no-line"></td>
+                                            <td class="no-line"></td>
+                                            <td class="no-line text-center">
+                                                <strong>Total</strong></td>
+                                            <td class="no-line text-right"><h4 class="m-0">6000 Bs</h4></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                        </div>
+
+                        
                     </div>
                 </div>
             </div>

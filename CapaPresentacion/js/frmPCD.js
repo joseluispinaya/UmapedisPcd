@@ -376,6 +376,48 @@ function sendAgregarTutor() {
     });
 }
 
+function sendEditarTutor() {
+
+    var request = {
+        oTutor: {
+            Idtutor: parseInt($("#txtidtutoo").val()),
+            Ciapoderado: $("#txtcituoo").val(),
+            Nombres: $("#txtNomAptut").val(),
+            Parentesco: $("#txtParentetutt").val(),
+            Celular: $("#txtCeltutoo").val()
+        }
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "frmPCD.aspx/EditarTutor",
+        data: JSON.stringify(request),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        beforeSend: function () {
+            // Mostrar overlay de carga antes de enviar la solicitud
+            $(".modal-body").LoadingOverlay("show");
+        },
+        success: function (response) {
+            $(".modal-body").LoadingOverlay("hide");
+            if (response.d.Estado) {
+                $('#modalroltut').modal('hide');
+                //swal("Mensaje", "Se Actualizo de manera correcta", "success")
+                swal("Mensaje", response.d.Mensage, response.d.Valor);
+                dtObtenerPcd();
+            } else {
+                //swal("Mensaje", "No se pudo Actualizar el usuario", "warning")
+                swal("Mensaje", response.d.Mensage, response.d.Valor);
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            $(".modal-body").LoadingOverlay("hide");
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        }
+
+    });
+}
+
 $('#btnGuardarTtuto').on('click', function () {
 
     if (parseInt($("#txtidtutoo").val()) == 0) {
@@ -383,7 +425,8 @@ $('#btnGuardarTtuto').on('click', function () {
         sendAgregarTutor();
         //registerDataAjaxOpc();
     } else {
-        swal("Mensaje!", "Ocurrio un error Con Id del PCD Cierre e intente mas tarde", "error")
+        sendEditarTutor();
+        //swal("Mensaje!", "Ocurrio un error Con Id del PCD Cierre e intente mas tarde", "error")
     }
 
 });
@@ -572,7 +615,7 @@ function sendDataToServer(request) {
                 swal("Mensaje", response.d.Mensage, "success");
                 $('#listaRegistrosRow').show();
                 $('#nuevoRegistroRow').hide();
-                //dtUsuarios();
+                dtObtenerPcd();
                 limpiarText();
             } else {
                 swal("Mensaje", response.d.Mensage, "error");
@@ -589,6 +632,7 @@ $('#btnGuardarCambiospcd').on('click', function () {
     registerDataAjaxOpc();
 })
 
+//buecar pcd y reporte
 $('#btnBuscarpcd').on('click', function () {
 
     var request = {

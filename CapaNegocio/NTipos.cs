@@ -36,7 +36,14 @@ namespace CapaNegocio
             //    throw ex;
             //}
         }
-
+        public List<EMeses> ObtenerMeses()
+        {
+            return DTipos.getInstance().ObtenerMeses();
+        }
+        public List<EGestion> ObtenerGestion()
+        {
+            return DTipos.getInstance().ObtenerGestion();
+        }
         public List<EAsociacion> ObtenerAsociacion()
         {
             return DTipos.getInstance().ObtenerAsociacion();

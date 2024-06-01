@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EAsociacion.cs" />
+    <Compile Include="EGestion.cs" />
     <Compile Include="EMeses.cs" />
+    <Compile Include="EPagoBono.cs" />
     <Compile Include="EPersonasDisca.cs" />
     <Compile Include="ERol.cs" />
     <Compile Include="ETipoDisca.cs" />

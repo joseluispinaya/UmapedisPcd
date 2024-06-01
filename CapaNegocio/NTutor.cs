@@ -27,6 +27,10 @@ namespace CapaNegocio
         {
             return DTutor.getInstance().RegistrarTutor(idpersodisca, oETutor);
         }
+        public bool ActualizarTutor(ETutor oETutor)
+        {
+            return DTutor.getInstance().ActualizarTutor(oETutor);
+        }
         public List<ETutor> ObtenerTutores()
         {
             return DTutor.getInstance().ObtenerTutores();

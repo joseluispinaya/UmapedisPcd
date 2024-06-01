@@ -99,6 +99,78 @@ namespace CapaDatos
 
             return rptListaRol;
         }
+
+        public List<EMeses> ObtenerMeses()
+        {
+            List<EMeses> rptListaRol = new List<EMeses>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerMeses", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaRol.Add(new EMeses()
+                                {
+                                    Idmes = Convert.ToInt32(dr["Idmes"]),
+                                    Descripcion = dr["Descripcion"].ToString()
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                throw new Exception("Error al obtener los meses", ex);
+            }
+
+            return rptListaRol;
+        }
+
+        public List<EGestion> ObtenerGestion()
+        {
+            List<EGestion> rptListaRol = new List<EGestion>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerGestion", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaRol.Add(new EGestion()
+                                {
+                                    Idges = Convert.ToInt32(dr["Idges"]),
+                                    Descripcion = dr["Descripcion"].ToString()
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                throw new Exception("Error al obtener los meses", ex);
+            }
+
+            return rptListaRol;
+        }
         public List<EAsociacion> ObtenerAsociacion()
         {
             List<EAsociacion> rptListaRol = new List<EAsociacion>();

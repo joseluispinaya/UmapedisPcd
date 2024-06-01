@@ -134,7 +134,7 @@
                                 <ul class="list-unstyled">
                                     <li><a href="frmUsuario.aspx">Usuarios</a></li>
                                     <li><a href="frmPCD.aspx">Personal PCD</a></li>
-                                    <li><a href="frmWebcam.aspx">Camara web</a></li>
+                                    <li><a href="frmPagoBono.aspx">Bono PCD</a></li>
                                     <li><a href="icons-themify.html">Themify Icons</a></li>
                                 </ul>
                             </li>

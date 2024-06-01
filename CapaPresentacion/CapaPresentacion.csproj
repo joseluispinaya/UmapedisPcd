@@ -346,6 +346,7 @@
     <Content Include="assets\toastr\toastr.min.css" />
     <Content Include="assets\toastr\toastr.min.js" />
     <Content Include="frmEditarPcd.aspx" />
+    <Content Include="frmPagoBono.aspx" />
     <Content Include="frmPCD.aspx" />
     <Content Include="frmUsuario.aspx" />
     <Content Include="Imagenes\Sinfotop.jpg" />
@@ -354,6 +355,7 @@
     <Content Include="IniciarSesion.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="js\frmEditarPcd.js" />
+    <Content Include="js\frmPagoBono.js" />
     <Content Include="js\frmPCD.js" />
     <Content Include="js\frmUsuario.js" />
     <Content Include="js\IniciarSesion.js" />
@@ -368,6 +370,13 @@
     </Compile>
     <Compile Include="frmEditarPcd.aspx.designer.cs">
       <DependentUpon>frmEditarPcd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmPagoBono.aspx.cs">
+      <DependentUpon>frmPagoBono.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmPagoBono.aspx.designer.cs">
+      <DependentUpon>frmPagoBono.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmPCD.aspx.cs">
       <DependentUpon>frmPCD.aspx</DependentUpon>

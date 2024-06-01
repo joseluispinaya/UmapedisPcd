@@ -190,5 +190,27 @@ namespace CapaPresentacion
                 return new RespuestaZ<bool> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message, Valor = "error" };
             }
         }
+
+        [WebMethod]
+        public static RespuestaZ<bool> EditarTutor(ETutor oTutor)
+        {
+            try
+            {
+
+                bool Respuesta = NTutor.getInstance().ActualizarTutor(oTutor);
+                var respuesta = new RespuestaZ<bool>
+                {
+                    Estado = Respuesta,
+                    Mensage = Respuesta ? "Actualizado correctamente" : "Ocurrio un error intente mas tarde",
+                    Valor = Respuesta ? "success" : "warning"
+                };
+
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+                return new RespuestaZ<bool> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message, Valor = "error" };
+            }
+        }
     }
 }

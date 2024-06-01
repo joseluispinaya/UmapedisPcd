@@ -96,7 +96,7 @@ namespace CapaPresentacion
 
                 if (items == null)
                 {
-                    return new RespuestaZ<bool>() { Estado = false, Mensage = "No se encontro el Usuario" };
+                    return new RespuestaZ<bool>() { Estado = false, Mensage = "No se encontro el Usuario", Valor = "error" };
                 }
 
                 if (imageBytes != null && imageBytes.Length > 0)
@@ -138,7 +138,8 @@ namespace CapaPresentacion
             }
             catch (Exception ex)
             {
-                return new RespuestaZ<bool> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message };
+                //return new RespuestaZ<bool> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message };
+                return new RespuestaZ<bool> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message, Valor = "error" };
             }
 
         }

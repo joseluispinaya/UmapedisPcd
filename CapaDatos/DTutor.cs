@@ -66,6 +66,43 @@ namespace CapaDatos
             return respuesta;
         }
 
+        public bool ActualizarTutor(ETutor oETutor)
+        {
+            bool respuesta = false;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_ModificarTutordePCD", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@Idtutor", oETutor.Idtutor);
+                        cmd.Parameters.AddWithValue("@Ciapoderado", oETutor.Ciapoderado);
+                        cmd.Parameters.AddWithValue("@Nombrereapoderado", oETutor.Nombres);
+                        cmd.Parameters.AddWithValue("@Parentesco", oETutor.Parentesco);
+                        cmd.Parameters.AddWithValue("@Celular", oETutor.Celular);
+                        SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        respuesta = Convert.ToBoolean(outputParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al Actualizar el Tutor. Intente más tarde.", ex);
+            }
+
+            return respuesta;
+        }
+
         public List<ETutor> ObtenerTutores()
         {
             List<ETutor> rptListaUsuario = new List<ETutor>();
