@@ -116,6 +116,63 @@ namespace CapaDatos
 
             return rptListaBono;
         }
+        public EPagoBono BuscarPagoBoboId(int idpcd)
+        {
+            EPagoBono objusu = null;
 
+            try
+            {
+                using (var con = ConexionBD.getInstance().ConexionDB())
+                using (var comando = new SqlCommand("RtbonoNul", con))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@Idbono", idpcd);
+
+                    con.Open();
+
+                    using (var dr = comando.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            objusu = new EPagoBono
+                            {
+                                Idbono = Convert.ToInt32(dr["Idbono"]),
+                                FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"].ToString()).ToString("dd/MM/yyyy"),
+                                oEMeses = new EMeses() { Descripcion = dr["Descripcion"].ToString() },
+                                Codigo = dr["Codigo"].ToString(),
+                                oEPersonasDisca = new EPersonasDisca() { 
+                                    Nombres = dr["Pcd"].ToString(), 
+                                    Ciperso = dr["Ciperso"].ToString(),
+                                    Codcarnetdisca = dr["Codcarnetdisca"].ToString(),
+                                    oTutor = new ETutor()
+                                    {
+                                        Nombres = dr["Nombrereapoderado"].ToString(),
+                                        Ciapoderado = dr["Ciapoderado"].ToString(),
+                                        Parentesco = dr["Parentesco"].ToString(),
+                                    }
+                                },
+                                oUsuario = new EUsuario() { 
+                                    Nombres = dr["NomAdmin"].ToString(),
+                                }
+                            };
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                // Manejo de excepciones específicas de SQL
+                // Log(sqlEx); // Implementa tu método de logging aquí
+                throw new Exception("Error en la base de datos", sqlEx);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones generales
+                // Log(ex); // Implementa tu método de logging aquí
+                throw new Exception("Error general", ex);
+            }
+
+            return objusu;
+        }
     }
 }

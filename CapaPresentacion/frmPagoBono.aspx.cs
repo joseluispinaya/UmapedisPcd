@@ -17,10 +17,14 @@ namespace CapaPresentacion
         }
 
         [WebMethod]
-        public static Respuesta<List<EPagoBono>> ObtenerDetalleBonoPCD()
+        public static Respuesta<List<EPagoBono>> ObtenerDetalleBonoPCD(int Idpcd)
         {
-            List<EPagoBono> Lista = NPagoBono.getInstance().DetallePagosPersona(1, 2);
-            //Lista = NUsuario.getInstance().ObtenerUsuarios();
+            int currentYearLocal = DateTime.Now.Year;
+
+            List<EGestion> Listage = NTipos.getInstance().ObtenerGestion();
+            var itemsg = Listage.FirstOrDefault(x => x.Descripcion == currentYearLocal.ToString());
+
+            List<EPagoBono> Lista = NPagoBono.getInstance().DetallePagosPersona(Idpcd, itemsg.Idges);
 
             if (Lista != null)
             {
@@ -74,6 +78,10 @@ namespace CapaPresentacion
             //List<EPagoBono> ListaBo = NPagoBono.getInstance().DetallePagosPersona(1002, 2);
             List<EPagoBono> ListaBo = NPagoBono.getInstance().DetallePagosPersona(Idpcd, itemsg.Idges);
 
+            //float totalMontos = ListaBo.Sum(pago => pago.Monto);
+            float totalMonto = ListaBo?.Sum(pago => pago.Monto) ?? 0;
+            string totalactual = " " + totalMonto.ToString("F2") + " Bs";
+
             // Obtener los Ids de los meses que están en ListaBo
             var mesesPagados = ListaBo.Select(b => b.Idmes).ToList();
 
@@ -82,7 +90,7 @@ namespace CapaPresentacion
 
             if (Lista != null)
             {
-                return new Respuesta<List<EMeses>>() { estado = true, objeto = selecnuevo };
+                return new Respuesta<List<EMeses>>() { estado = true, objeto = selecnuevo, valor = totalactual };
             }
             else
             {
@@ -95,13 +103,19 @@ namespace CapaPresentacion
         {
             try
             {
+                if (oPersonapcd.Idmes == 12)
+                {
+                    return new RespuestaZ<int> { Estado = false, Mensage = "No puede Registrar Mes de Diciembre." };
+                }
+                int currentYearLocal = DateTime.Now.Year;
+
                 int IdUsuario = Configuracion.oUsuario.IdUsuario;
                 //oEGestion = new EGestion() { Descripcion = oPersonapcd.oEGestion.Descripcion},
                 EPagoBono obj = new EPagoBono
                 {
                     IdUsuario = IdUsuario,
                     Idpersodisca = oPersonapcd.Idpersodisca,
-                    oEGestion = new EGestion() { Descripcion = "2024"},
+                    oEGestion = new EGestion() { Descripcion = currentYearLocal.ToString() },
                     Idmes = oPersonapcd.Idmes,
                     Monto = oPersonapcd.Monto
                 };
@@ -121,6 +135,28 @@ namespace CapaPresentacion
             catch (Exception ex)
             {
                 return new RespuestaZ<int> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message };
+            }
+        }
+
+        [WebMethod]
+        public static Respuesta<EPagoBono> ObtenerDetallePagoActual(int Idpcd)
+        {
+            try
+            {
+                var oPago = NPagoBono.getInstance().BuscarPagoBoboId(Idpcd);
+
+                return oPago != null
+                    ? new Respuesta<EPagoBono> { estado = true, objeto = oPago }
+                    : new Respuesta<EPagoBono> { estado = false, objeto = null };
+            }
+            catch (Exception ex)
+            {
+                return new Respuesta<EPagoBono>
+                {
+                    estado = false,
+                    objeto = null,
+                    valor = "Ocurrió un error: " + ex.Message
+                };
             }
         }
     }

@@ -24,5 +24,7 @@ namespace CapaEntidad
         public bool Estadoaltern { get; set; }
         public DateTime Fecha { get; set; }
         public string FechaRegistro { get; set; }
+
+        public string MontoCadena => $"Bs/ {Monto:F2}";
     }
 }

@@ -109,9 +109,11 @@
     <Content Include="assets\icons\themify-icons\themify-icons.css" />
     <Content Include="assets\images\big\img1.jpg" />
     <Content Include="assets\images\favicon.ico" />
+    <Content Include="assets\images\Isuces.jpg" />
     <Content Include="assets\images\logo_sm.png" />
     <Content Include="assets\images\logo_white_2.png" />
     <Content Include="assets\images\restaurant.png" />
+    <Content Include="assets\images\uma2.png" />
     <Content Include="assets\images\users\avatar-1.jpg" />
     <Content Include="assets\images\users\avatar-2.jpg" />
     <Content Include="assets\images\users\avatar-3.jpg" />
@@ -345,6 +347,7 @@
     <Content Include="assets\style.css" />
     <Content Include="assets\toastr\toastr.min.css" />
     <Content Include="assets\toastr\toastr.min.js" />
+    <Content Include="docBoleta.aspx" />
     <Content Include="frmEditarPcd.aspx" />
     <Content Include="frmPagoBono.aspx" />
     <Content Include="frmPCD.aspx" />
@@ -354,6 +357,7 @@
     <Content Include="ImagePcd\verpdf1.png" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="Inicio.aspx" />
+    <Content Include="js\docBoleta.js" />
     <Content Include="js\frmEditarPcd.js" />
     <Content Include="js\frmPagoBono.js" />
     <Content Include="js\frmPCD.js" />
@@ -364,6 +368,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuracion.cs" />
+    <Compile Include="docBoleta.aspx.cs">
+      <DependentUpon>docBoleta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="docBoleta.aspx.designer.cs">
+      <DependentUpon>docBoleta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmEditarPcd.aspx.cs">
       <DependentUpon>frmEditarPcd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
