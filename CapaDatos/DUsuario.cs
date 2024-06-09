@@ -270,6 +270,38 @@ namespace CapaDatos
             return respuesta;
         }
 
+        public int ObtenerGestionAct()
+        {
+            int respuesta = 0;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("ObtenerGestionActual", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        SqlParameter outputParam = new SqlParameter("@GestionAc", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        respuesta = Convert.ToInt32(outputParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrió un error al obtener la gestión actual.", ex);
+            }
+
+            return respuesta;
+        }
+
         public int LoginUsuario(string Usuario, string Clave)
         {
             SqlConnection con = null;

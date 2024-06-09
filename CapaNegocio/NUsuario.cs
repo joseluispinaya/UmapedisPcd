@@ -47,5 +47,10 @@ namespace CapaNegocio
         {
             return DUsuario.getInstance().LoginUsuarioA(Usuario, Clave);
         }
+
+        public int ObtenerGestionAct()
+        {
+            return DUsuario.getInstance().ObtenerGestionAct();
+        }
     }
 }

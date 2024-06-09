@@ -182,63 +182,21 @@
                                                     <div class="card">
 
                                                         <div class="card-body">
-                                                            <h4 class="m-b-10 m-t-10">Detalle pago Pasado</h4>
-                                                            <div class="table-responsive">
-                                                                <table class="table">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <td><strong>Gestion</strong></td>
-                                                                            <td class="text-center"><strong>Monto</strong></td>
-                                                                            <td class="text-center"><strong>Cant Pagos</strong>
-                                                                            </td>
-                                                                            <td class="text-right"><strong>Total</strong></td>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td>2022</td>
-                                                                            <td class="text-center">250 Bs</td>
-                                                                            <td class="text-center">8</td>
-                                                                            <td class="text-right">2000 Bs</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>2023</td>
-                                                                            <td class="text-center">250 Bs</td>
-                                                                            <td class="text-center">8</td>
-                                                                            <td class="text-right">2000 Bs</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>2024</td>
-                                                                            <td class="text-center">250 Bs</td>
-                                                                            <td class="text-center">8</td>
-                                                                            <td class="text-right">2000 Bs</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="thick-line"></td>
-                                                                            <td class="thick-line"></td>
-                                                                            <td class="thick-line text-center">
-                                                                                <strong>Subtotal</strong></td>
-                                                                            <td class="thick-line text-right">6000 Bs</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="no-line"></td>
-                                                                            <td class="no-line"></td>
-                                                                            <td class="no-line text-center">
-                                                                                <strong>Descuento</strong></td>
-                                                                            <td class="no-line text-right">0.0 Bs</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="no-line"></td>
-                                                                            <td class="no-line"></td>
-                                                                            <td class="no-line text-center">
-                                                                                <strong>Total</strong></td>
-                                                                            <td class="no-line text-right">
-                                                                                <h4 class="m-0">6000 Bs</h4>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
+                                                            <h4 id="iddetallepasado" class="m-b-10 m-t-10">Detalle pago</h4>
+                                                            <table id="tbpagoBonopasad" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Id</th>
+                                                                        <th>Mes</th>
+                                                                        <th>Monto</th>
+                                                                        <th>Fecha</th>
+                                                                        <th>Funcionario</th>
+                                                                        <th>Acciones</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
                                                         </div>
                                                     </div>
                                                 </div>
