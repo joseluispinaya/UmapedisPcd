@@ -174,5 +174,101 @@ namespace CapaDatos
 
             return objusu;
         }
+    
+        public List<ResumenPagoBono> ObtenerResumens()
+        {
+            List<ResumenPagoBono> rptListaResumen = new List<ResumenPagoBono>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("sp_ObtenerResumenPagoBono", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaResumen.Add(new ResumenPagoBono()
+                                {
+                                    Idges = dr.GetInt32(dr.GetOrdinal("Idges")),
+                                    Descripcion = dr.GetString(dr.GetOrdinal("Descripcion")),
+                                    Ene = dr.IsDBNull(dr.GetOrdinal("Ene")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Ene")),
+                                    Feb = dr.IsDBNull(dr.GetOrdinal("Feb")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Feb")),
+                                    Mar = dr.IsDBNull(dr.GetOrdinal("Mar")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Mar")),
+                                    Abr = dr.IsDBNull(dr.GetOrdinal("Abr")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Abr")),
+                                    May = dr.IsDBNull(dr.GetOrdinal("May")) ? 0 : dr.GetDecimal(dr.GetOrdinal("May")),
+                                    Jun = dr.IsDBNull(dr.GetOrdinal("Jun")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Jun")),
+                                    Jul = dr.IsDBNull(dr.GetOrdinal("Jul")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Jul")),
+                                    Ago = dr.IsDBNull(dr.GetOrdinal("Ago")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Ago")),
+                                    Sep = dr.IsDBNull(dr.GetOrdinal("Sep")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Sep")),
+                                    Oct = dr.IsDBNull(dr.GetOrdinal("Oct")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Oct")),
+                                    Nov = dr.IsDBNull(dr.GetOrdinal("Nov")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Nov")),
+                                    Dic = dr.IsDBNull(dr.GetOrdinal("Dic")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Dic")),
+                                    Total = dr.IsDBNull(dr.GetOrdinal("Total")) ? 0 : dr.GetDecimal(dr.GetOrdinal("Total"))
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener lista", ex);
+            }
+
+            return rptListaResumen;
+        }
+        public List<ResumenPagoBono> ObtenerResumen()
+        {
+            List<ResumenPagoBono> rptListaResumen = new List<ResumenPagoBono>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("sp_ObtenerResumenPagoBono", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaResumen.Add(new ResumenPagoBono()
+                                {
+                                    Idges = dr.GetInt32(dr.GetOrdinal("Idges")),
+                                    Descripcion = dr.GetString(dr.GetOrdinal("Descripcion")),
+                                    Ene = dr.IsDBNull(dr.GetOrdinal("Ene")) ? 0 : Convert.ToDecimal(dr["Ene"]),
+                                    Feb = dr.IsDBNull(dr.GetOrdinal("Feb")) ? 0 : Convert.ToDecimal(dr["Feb"]),
+                                    Mar = dr.IsDBNull(dr.GetOrdinal("Mar")) ? 0 : Convert.ToDecimal(dr["Mar"]),
+                                    Abr = dr.IsDBNull(dr.GetOrdinal("Abr")) ? 0 : Convert.ToDecimal(dr["Abr"]),
+                                    May = dr.IsDBNull(dr.GetOrdinal("May")) ? 0 : Convert.ToDecimal(dr["May"]),
+                                    Jun = dr.IsDBNull(dr.GetOrdinal("Jun")) ? 0 : Convert.ToDecimal(dr["Jun"]),
+                                    Jul = dr.IsDBNull(dr.GetOrdinal("Jul")) ? 0 : Convert.ToDecimal(dr["Jul"]),
+                                    Ago = dr.IsDBNull(dr.GetOrdinal("Ago")) ? 0 : Convert.ToDecimal(dr["Ago"]),
+                                    Sep = dr.IsDBNull(dr.GetOrdinal("Sep")) ? 0 : Convert.ToDecimal(dr["Sep"]),
+                                    Oct = dr.IsDBNull(dr.GetOrdinal("Oct")) ? 0 : Convert.ToDecimal(dr["Oct"]),
+                                    Nov = dr.IsDBNull(dr.GetOrdinal("Nov")) ? 0 : Convert.ToDecimal(dr["Nov"]),
+                                    Dic = dr.IsDBNull(dr.GetOrdinal("Dic")) ? 0 : Convert.ToDecimal(dr["Dic"]),
+                                    Total = dr.IsDBNull(dr.GetOrdinal("Total")) ? 0 : Convert.ToDecimal(dr["Total"])
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener lista", ex);
+            }
+
+            return rptListaResumen;
+        }
+
     }
 }

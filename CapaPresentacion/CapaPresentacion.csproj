@@ -114,6 +114,7 @@
     <Content Include="assets\images\logo_white_2.png" />
     <Content Include="assets\images\restaurant.png" />
     <Content Include="assets\images\uma2.png" />
+    <Content Include="assets\images\umapp.png" />
     <Content Include="assets\images\users\avatar-1.jpg" />
     <Content Include="assets\images\users\avatar-2.jpg" />
     <Content Include="assets\images\users\avatar-3.jpg" />
@@ -348,9 +349,11 @@
     <Content Include="assets\toastr\toastr.min.css" />
     <Content Include="assets\toastr\toastr.min.js" />
     <Content Include="docBoleta.aspx" />
+    <Content Include="frmConsultasBono.aspx" />
     <Content Include="frmEditarPcd.aspx" />
     <Content Include="frmPagoBono.aspx" />
     <Content Include="frmPCD.aspx" />
+    <Content Include="frmReporteBono.aspx" />
     <Content Include="frmUsuario.aspx" />
     <Content Include="Imagenes\Sinfotop.jpg" />
     <Content Include="ImagePcd\logo1.png" />
@@ -361,6 +364,7 @@
     <Content Include="js\frmEditarPcd.js" />
     <Content Include="js\frmPagoBono.js" />
     <Content Include="js\frmPCD.js" />
+    <Content Include="js\frmReporteBono.js" />
     <Content Include="js\frmUsuario.js" />
     <Content Include="js\IniciarSesion.js" />
     <Content Include="rptPersonaPCD.aspx" />
@@ -374,6 +378,13 @@
     </Compile>
     <Compile Include="docBoleta.aspx.designer.cs">
       <DependentUpon>docBoleta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultasBono.aspx.cs">
+      <DependentUpon>frmConsultasBono.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmConsultasBono.aspx.designer.cs">
+      <DependentUpon>frmConsultasBono.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmEditarPcd.aspx.cs">
       <DependentUpon>frmEditarPcd.aspx</DependentUpon>
@@ -395,6 +406,13 @@
     </Compile>
     <Compile Include="frmPCD.aspx.designer.cs">
       <DependentUpon>frmPCD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteBono.aspx.cs">
+      <DependentUpon>frmReporteBono.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmReporteBono.aspx.designer.cs">
+      <DependentUpon>frmReporteBono.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmUsuario.aspx.cs">
       <DependentUpon>frmUsuario.aspx</DependentUpon>

@@ -30,8 +30,6 @@
                     <label for="chk" aria-hidden="true">Recuperar Clave</label>
                     <input class="input" type="email" name="email" id="cooree" placeholder="Correo"/>
                     <input class="input" type="text" name="txt" placeholder="Num Celular"/>
-                    <%--<input class="input" type="text" name="pswd" placeholder="Password" />--%>
-                    <%--<label class="labeljo">Revice su Correo</label>--%>
                     <br />
                     <h3 class="labeljo">Revice su Correo Electronico</h3>
                     <button type="button" id="btnRecupe">Recuperar</button>

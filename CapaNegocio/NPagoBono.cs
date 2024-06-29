@@ -37,5 +37,9 @@ namespace CapaNegocio
         {
             return DPagoBono.getInstance().BuscarPagoBoboId(idpcd);
         }
+        public List<ResumenPagoBono> ObtenerResumen()
+        {
+            return DPagoBono.getInstance().ObtenerResumen();
+        }
     }
 }

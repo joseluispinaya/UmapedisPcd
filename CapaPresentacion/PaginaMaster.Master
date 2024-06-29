@@ -43,8 +43,8 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="Inicio.aspx" class="logo"><span>Web</span>Admin</a>
-                        <a href="Inicio.aspx" class="logo-sm"><span>W</span></a>
+                        <a href="Inicio.aspx" class="logo"><span>UMAP</span>EDIS</a>
+                        <a href="Inicio.aspx" class="logo-sm"><span>G</span></a>
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@
                             </li>
                             <li class="hide-phone app-search float-left">
                                 <div role="search" class="navbar-form">
-                                    <input type="text" placeholder="Search..." class="form-control search-bar">
+                                    <input type="text" placeholder="Buscar..." class="form-control search-bar">
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>
                             </li>
@@ -117,7 +117,7 @@
                                 </ul>
                             </div>
 
-                            <p class="text-muted m-0"><i class="far fa-dot-circle text-primary"></i>Online</p>
+                            <p class="text-muted m-0"><i class="far fa-dot-circle text-primary"></i>  En linea</p>
                         </div>
                     </div>
                     <!--- Divider -->
@@ -126,7 +126,7 @@
                     <div id="sidebar-menu">
                         <ul>
                             <li>
-                                <a href="Inicio.aspx" class="waves-effect"><i class="mdi mdi-home"></i><span>Dashboard <span class="badge badge-primary float-right">1</span></span></a>
+                                <a href="Inicio.aspx" class="waves-effect"><i class="mdi mdi-home"></i><span>Inicio <span class="badge badge-primary float-right">1</span></span></a>
                             </li>
 
                             <li class="has_sub">
@@ -135,35 +135,15 @@
                                     <li><a href="frmUsuario.aspx">Usuarios</a></li>
                                     <li><a href="frmPCD.aspx">Personal PCD</a></li>
                                     <li><a href="frmPagoBono.aspx">Bono PCD</a></li>
-                                    <li><a href="icons-themify.html">Themify Icons</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i><span>Forms </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i><span>Consultas </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="form-elements.html">General Elements</a></li>
-                                    <li><a href="form-validation.html">Form Validation</a></li>
-                                    <li><a href="form-advanced.html">Advanced Form</a></li>
-                                    <li><a href="form-wysiwyg.html">WYSIWYG Editor</a></li>
-                                    <li><a href="form-uploads.html">Multiple File Upload</a></li>
+                                    <li><a href="frmConsultasBono.aspx">Bono PCD</a></li>
+                                    <li><a href="frmReporteBono.aspx">Por Gestion</a></li>
                                 </ul>
-                            </li>
-
-                            <li>
-                                <a href="typography.html" class="waves-effect"><i class="mdi mdi-diamond"></i><span>Typography <span class="badge badge-primary float-right">4</span></span></a>
-                            </li>
-
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-table"></i><span>Tables </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="tables-basic.html">Basic Tables</a></li>
-                                    <li><a href="tables-datatable.html">Data Table</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="calendar.html" class="waves-effect"><i class="mdi mdi-calendar"></i><span>Calendar <span class="badge badge-primary float-right">NEW</span></span></a>
                             </li>
 
                         </ul>
