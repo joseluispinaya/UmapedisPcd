@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\cardzero.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\elements.css" />
     <Content Include="assets\css\icons.css" />
@@ -107,6 +108,11 @@
     <Content Include="assets\icons\themify-icons\ie7\ie7.css" />
     <Content Include="assets\icons\themify-icons\ie7\ie7.js" />
     <Content Include="assets\icons\themify-icons\themify-icons.css" />
+    <Content Include="assets\images\av-1.jpg" />
+    <Content Include="assets\images\baner\12.jpg" />
+    <Content Include="assets\images\baner\13.jpg" />
+    <Content Include="assets\images\baner\14.jpg" />
+    <Content Include="assets\images\baner\15.jpg" />
     <Content Include="assets\images\big\img1.jpg" />
     <Content Include="assets\images\favicon.ico" />
     <Content Include="assets\images\Isuces.jpg" />
@@ -367,6 +373,8 @@
     <Content Include="js\frmReporteBono.js" />
     <Content Include="js\frmUsuario.js" />
     <Content Include="js\IniciarSesion.js" />
+    <Content Include="js\Inicio.js" />
+    <Content Include="js\menuMaster.js" />
     <Content Include="rptPersonaPCD.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
