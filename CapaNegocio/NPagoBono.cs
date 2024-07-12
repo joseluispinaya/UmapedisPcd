@@ -33,6 +33,10 @@ namespace CapaNegocio
             return DPagoBono.getInstance().DetallePagosPersona(Idpersonapcd, Idgesti);
         }
 
+        public List<EPagoBono> ObtenerInfoGenera(int idPcd)
+        {
+            return DPagoBono.getInstance().ObtenerInfoGenera(idPcd);
+        }
         public EPagoBono BuscarPagoBoboId(int idpcd)
         {
             return DPagoBono.getInstance().BuscarPagoBoboId(idpcd);

@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaster.Master" AutoEventWireup="true" CodeBehind="frmPagoBono.aspx.cs" Inherits="CapaPresentacion.frmPagoBono" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="assets/cardzero.css" rel="stylesheet"/>
     <style>
         #cardhi {
             border: 2px solid #36af51 !important;
@@ -34,7 +35,7 @@
                             </div>
                             <div class="col-sm-5">
                                 <button id="btnBuscarpcdbono" type="button" class="btn btn-sm btn-success">Buscar</button>
-                                <button id="btnImprimirpcdebono" type="button" class="btn btn-sm btn-primary">
+                                <button id="btnImprimirpcdebono" type="button" class="btn btn-sm btn-primary" style="margin-left: 30px;">
                                     <i class="fa fa-print"></i> Imprimir
                                 </button>
                             </div>
@@ -42,50 +43,43 @@
                     </div>
                     <hr class="m-b-10 m-t-5" />
                     <div class="row" id="mostrarbonopa">
+
                         <div class="col-sm-4">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="card" id="cardhi">
-                                        <div class="card-body user-card">
-                                            <input id="txtidPcdbono" class="model" name="Idpcdbon" value="0" type="hidden" />
-                                            <input id="txtmontoo" class="model" name="Idpn" value="250" type="hidden" />
-                                            <div class="media-main">
-                                                <a class="float-left" href="#">
-                                                    <img id="imgbonotopot" class="thumb-lg rounded-circle" src="assets/images/users/avatar-2.jpg" alt="">
-                                                </a>
-                                                <div class="info pl-3">
-                                                    <h4 class="mt-3" id="rptnamebo">Pauline I. Bird</h4>
-                                                    <p class="text-muted" id="rptapellibo">Family Member</p>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <%--<p class="text-muted info-text">been the industry's standard dummy te</p>--%>
-                                            <div class="row m-b-0 m-t-5">
-                                                <div class="col-4 text-right">
-                                                    <address>
-                                                        <strong>Nro CI:</strong><br>
-                                                        <strong>Nro Cred:</strong><br>
-                                                        <strong>% Disca:</strong><br>
-                                                        <strong>Afialiado:</strong><br>
-                                                        <strong>Tipo:</strong><br>
-                                                        <strong>Tutor:</strong>
-                                                    </address>
-                                                </div>
-                                                <div class="col-8">
-                                                    <address>
-                                                        <label id="lblcipcd" class="sin-margin-bottom"></label><br>
-                                                        <label id="lblcrede" class="sin-margin-bottom"></label><br>
-                                                        <label id="lblporceb" class="sin-margin-bottom"></label><br>
-                                                        <label id="lblasocib" class="sin-margin-bottom"></label><br>
-                                                        <label id="lbltipob" class="sin-margin-bottom"></label><br>
-                                                        <label id="lbltutpcd" class="sin-margin-bottom"></label>
-                                                    </address>
-                                                </div>
-                                            </div>
+                            <div class="card">
+                                <div class="card-header bg-primary">
+                                    <h4 class="card-title m-0">INFORMACION DE PCD</h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center">
+                                    <input id="txtidPcdbono" class="model" name="Idpcdbon" value="0" type="hidden" />
+                                    <input id="txtmontoo" class="model" name="Idpn" value="250" type="hidden" />
+                                    <div class="cardui">
+                                        <div class="cardui-image">
+                                            <img src="assets/images/umapp.png" alt="">
                                         </div>
-                                        <!-- card-body -->
+                                        <div class="profile-imageu">
+                                            <img id="imgbonotopot" src="assets/images/av-1.jpg" alt="">
+                                        </div>
+                                        <div class="cardui-content">
+                                            <h3 id="rptnamebo">UMAPEDIS</h3>
+                                            <p id="rptapellibo">DIRECCION DG AG</p>
+                                            <strong>Nro CI :</strong>
+                                            <label id="lblcipcd">73999544</label><br>
+                                            <strong>Nro Cred: </strong>
+                                            <label id="lblcrede">Umapedis@gmail.com</label><br>
+                                            <strong>Disca:  </strong>
+                                            <label id="lblporceb">SILVI NUEVA</label><br>
+                                            <strong>Afialiado:  </strong>
+                                            <label id="lblasocib">SILVIA VILL</label><br>
+                                            <strong>Tipo:  </strong>
+                                            <label id="lbltipob">SILVIA V</label><br>
+                                            <strong>Tutor:  </strong>
+                                            <label id="lbltutpcd">SILVIA NUEVA</label>
+                                        </div>
+                                        <div class="iconocs">
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="col-sm-8">
@@ -132,9 +126,8 @@
                                                         <button id="btnregisbonoactu" type="button" class="btn btn-success waves-effect waves-light m-l-15">Registrar Pago</button>
                                                     </div>
 
-                                                    <div class="card">
-
-                                                        <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
                                                             <h4 id="iddetalleactuh" class="m-b-10 m-t-10">Detalle pago</h4>
                                                             <table id="tbpagoBono" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                                                                 <thead>
@@ -152,6 +145,25 @@
                                                             </table>
                                                         </div>
                                                     </div>
+                                                    <%--<div class="card">
+                                                        <div class="card-body">
+                                                            <h4 id="iddetalleactuh" class="m-b-10 m-t-10">Detalle pago</h4>
+                                                            <table id="tbpagoBono" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Id</th>
+                                                                        <th>Mes</th>
+                                                                        <th>Monto</th>
+                                                                        <th>Fecha</th>
+                                                                        <th>Funcionario</th>
+                                                                        <th>Acciones</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -179,9 +191,8 @@
                                                         <button id="btnregisbonopasa" type="button" class="btn btn-success waves-effect waves-light m-l-15">Registrar Pago</button>
                                                     </div>
 
-                                                    <div class="card">
-
-                                                        <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
                                                             <h4 id="iddetallepasado" class="m-b-10 m-t-10">Detalle pago</h4>
                                                             <table id="tbpagoBonopasad" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                                                                 <thead>
@@ -199,14 +210,85 @@
                                                             </table>
                                                         </div>
                                                     </div>
+
+
+                                                    <%--<div class="card">
+                                                        <div class="card-body">
+                                                            <h4 id="iddetallepasado" class="m-b-10 m-t-10">Detalle pago</h4>
+                                                            <table id="tbpagoBonopasad" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Id</th>
+                                                                        <th>Mes</th>
+                                                                        <th>Monto</th>
+                                                                        <th>Fecha</th>
+                                                                        <th>Funcionario</th>
+                                                                        <th>Acciones</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>--%>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="message-2" role="tabpanel" aria-labelledby="message-tab-2">
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <div class="card-body">
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-sm-12 text-center">
+                                                            <label for="txtDocumentoClienteat" id="iddetalleGenera">Nro CI</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <table id="tbpagoBonoGeneral" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Id</th>
+                                                                        <th>Gestion</th>
+                                                                        <th>Nro Pagos</th>
+                                                                        <th>Total</th>
+                                                                        <th>Acciones</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <h4 id="iddetallD" class="m-b-10 m-t-10">Detalle pago</h4>
+                                                            <table id="tbpagoBonopDett" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Id</th>
+                                                                        <th>Mes</th>
+                                                                        <th>Monto</th>
+                                                                        <th>Fecha</th>
+                                                                        <th>Funcionario</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

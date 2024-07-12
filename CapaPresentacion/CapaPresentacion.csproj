@@ -355,6 +355,7 @@
     <Content Include="assets\toastr\toastr.min.css" />
     <Content Include="assets\toastr\toastr.min.js" />
     <Content Include="docBoleta.aspx" />
+    <Content Include="frmAsociaciones.aspx" />
     <Content Include="frmConsultasBono.aspx" />
     <Content Include="frmEditarPcd.aspx" />
     <Content Include="frmPagoBono.aspx" />
@@ -367,6 +368,7 @@
     <Content Include="IniciarSesion.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="js\docBoleta.js" />
+    <Content Include="js\frmAsociaciones.js" />
     <Content Include="js\frmEditarPcd.js" />
     <Content Include="js\frmPagoBono.js" />
     <Content Include="js\frmPCD.js" />
@@ -386,6 +388,13 @@
     </Compile>
     <Compile Include="docBoleta.aspx.designer.cs">
       <DependentUpon>docBoleta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmAsociaciones.aspx.cs">
+      <DependentUpon>frmAsociaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmAsociaciones.aspx.designer.cs">
+      <DependentUpon>frmAsociaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmConsultasBono.aspx.cs">
       <DependentUpon>frmConsultasBono.aspx</DependentUpon>

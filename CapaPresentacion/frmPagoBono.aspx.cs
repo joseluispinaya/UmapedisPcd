@@ -244,6 +244,48 @@ namespace CapaPresentacion
                 return new RespuestaZ<int> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message };
             }
         }
+
+        [WebMethod]
+        public static Respuesta<List<EPagoBono>> ObtenerDetalleGeneralP(int Idpcd)
+        {
+            try
+            {
+                List<EPagoBono> Lista = NPagoBono.getInstance().ObtenerInfoGenera(Idpcd);
+                float total = Lista?.Sum(p => p.Monto) ?? 0;
+                var totcade = total.ToString("F2") + " Bs";
+                if (Lista != null)
+                {
+                    return new Respuesta<List<EPagoBono>>() { estado = true, objeto = Lista, valor = totcade };
+                }
+                else
+                {
+                    return new Respuesta<List<EPagoBono>>() { estado = false, objeto = null };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Respuesta<List<EPagoBono>>() { estado = false, objeto = null, valor = $"Error : {ex.Message}" };
+            }
+        }
+
+        [WebMethod]
+        public static Respuesta<List<EPagoBono>> ObtenerDetalledeGeneral(int Idpcd, int IdGest)
+        {
+
+            List<EPagoBono> Lista = NPagoBono.getInstance().DetallePagosPersona(Idpcd, IdGest);
+
+            float totalMonto = Lista?.Sum(pago => pago.Monto) ?? 0;
+            string totalactualpasa = totalMonto.ToString("F2") + " Bs";
+
+            if (Lista != null)
+            {
+                return new Respuesta<List<EPagoBono>>() { estado = true, objeto = Lista, valor = totalactualpasa };
+            }
+            else
+            {
+                return new Respuesta<List<EPagoBono>>() { estado = false, objeto = null };
+            }
+        }
         [WebMethod]
         public static Respuesta<EPagoBono> ObtenerDetallePagoActual(int Idpcd)
         {

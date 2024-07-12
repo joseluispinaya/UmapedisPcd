@@ -2,6 +2,8 @@
 
 var table;
 var tablepa;
+var tablege;
+var tableDe;
 
 function ObtenerDetab() {
     var d = new Date();
@@ -238,6 +240,120 @@ function limpiartxt() {
 }
 //buecar pcd y reporte
 
+function dtBonoGeneral() {
+    // Verificar si el DataTable ya está inicializado
+    if ($.fn.DataTable.isDataTable("#tbpagoBonoGeneral")) {
+        // Destruir el DataTable existente
+        $("#tbpagoBonoGeneral").DataTable().destroy();
+        // Limpiar el contenedor del DataTable
+        $('#tbpagoBonoGeneral tbody').empty();
+    }
+    var request = { Idpcd: parseInt($("#txtidPcdbono").val()) }
+
+    tablege = $("#tbpagoBonoGeneral").DataTable({
+        responsive: true,
+        "ajax": {
+            "url": 'frmPagoBono.aspx/ObtenerDetalleGeneralP',
+            "type": "POST",
+            "contentType": "application/json; charset=utf-8",
+            "dataType": "json",
+            "data": function () {
+                return JSON.stringify(request);
+            },
+            "dataSrc": function (json) {
+                if (json.d.estado) {
+                    $("#iddetalleGenera").text("Total Cobrado " + json.d.valor);
+                    return json.d.objeto;
+                } else {
+                    return [];
+                }
+            },
+            "error": function (xhr, status, error) {
+                console.error("Error al obtener los datos: ", error);
+            }
+        },
+        "columns": [
+            { "data": "Idges", "visible": false, "searchable": false },
+            { "data": "oEGestion.Descripcion" },
+            { "data": "ValorCodigo" },
+            { "data": "Monto" },
+            {
+                "defaultContent": '<button class="btn btn-success btn-verdet btn-xs" title="Ver Detalle">Detalle</button>',
+                "orderable": false,
+                "searchable": false,
+                "width": "30px"
+            }
+        ],
+        "dom": "rt",
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        }
+    });
+}
+
+$("#tbpagoBonoGeneral tbody").on("click", ".btn-verdet", function (e) {
+    e.preventDefault();
+    let filaSeleccionada;
+
+    if ($(this).closest("tr").hasClass("child")) {
+        filaSeleccionada = $(this).closest("tr").prev();
+    } else {
+        filaSeleccionada = $(this).closest("tr");
+    }
+
+    const model = tablege.row(filaSeleccionada).data();
+    var idpc = $("#txtidPcdbono").val();
+    dtBonoGeneralDetalles(idpc, model.Idges);
+    //var request = { Idpcd: parseInt($("#txtidPcdbono").val()) }
+})
+
+function dtBonoGeneralDetalles(idPcs, idges) {
+
+    if ($.fn.DataTable.isDataTable("#tbpagoBonopDett")) {
+        $("#tbpagoBonopDett").DataTable().destroy();
+        $('#tbpagoBonopDett tbody').empty();
+    }
+    var request = {
+        Idpcd: idPcs,
+        IdGest: idges
+    }
+
+    tableDe = $("#tbpagoBonopDett").DataTable({
+        responsive: true,
+        "ajax": {
+            "url": 'frmPagoBono.aspx/ObtenerDetalledeGeneral',
+            "type": "POST",
+            "contentType": "application/json; charset=utf-8",
+            "dataType": "json",
+            "data": function () {
+                return JSON.stringify(request);
+            },
+            "dataSrc": function (json) {
+                if (json.d.estado) {
+                    $("#iddetallD").text("Total Cobrado " + json.d.valor);
+                    return json.d.objeto;
+                } else {
+                    return [];
+                }
+            },
+            "error": function (xhr, status, error) {
+                console.error("Error al obtener los datos: ", error);
+            }
+        },
+        "columns": [
+            { "data": "Idbono", "visible": false, "searchable": false },
+            { "data": "oEMeses.Descripcion" },
+            { "data": "MontoCadena" },
+            { "data": "FechaRegistro" },
+            { "data": "oUsuario.Nombres" }
+        ],
+        "dom": "rt",
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        }
+    });
+}
+
 function cargarDatosPcd() {
 
     //$("#tbpagoBono tbody").html("");
@@ -264,7 +380,7 @@ function cargarDatosPcd() {
                     $("#rptapellibo").text(data.d.objeto.Apellidos);
                     $("#lblcipcd").text(data.d.objeto.Ciperso);
                     $("#lblcrede").text(data.d.objeto.Codcarnetdisca);
-                    $("#lblporceb").text(data.d.objeto.Porsentaje);
+                    $("#lblporceb").text(data.d.objeto.Porsentaje + " %");
                     $("#lblasocib").text(data.d.objeto.oAsociacion.Descripcion);
                     $("#lbltipob").text(data.d.objeto.oTipoDisca.Descripcion);
                     $("#lbltutpcd").text(data.d.objeto.oTutor.Nombres);
@@ -272,6 +388,7 @@ function cargarDatosPcd() {
                     dtListaBonoPcd();
                     cargarMesesPasado();
                     dtListaBonoPasadoPcd();
+                    dtBonoGeneral();
                     $('#mostrarbonopa').show();
                 } else {
                     $('#mostrarbonopa').hide();
@@ -428,7 +545,9 @@ $('#btnregisbonopasa').on('click', function () {
 
 $('#btnImprimirpcdebono').on('click', function () {
 
-    //var idbonoc = '2';
-    //var url = 'docBoleta.aspx?id=' + idbonoc;
-    //window.open(url, '', 'height=600,width=800,scrollbars=0,location=1,toolbar=0');
+    $('#ocultar').hide();
+    $('#omitirpagobono').hide();
+    window.print();
+    $('#ocultar').show();
+    $('#omitirpagobono').show();
 });

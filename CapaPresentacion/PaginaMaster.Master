@@ -127,8 +127,9 @@
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-opacity"></i><span>Modulos </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="frmUsuario.aspx">Usuarios</a></li>
+                                    <li><a href="frmAsociaciones.aspx">Asociacion</a></li>
                                     <li><a href="frmPCD.aspx">Personal PCD</a></li>
-                                    <li><a href="frmPagoBono.aspx">Bono PCD</a></li>
+                                    <li><a href="frmPagoBono.aspx">Pago Bono</a></li>
                                 </ul>
                             </li>
 

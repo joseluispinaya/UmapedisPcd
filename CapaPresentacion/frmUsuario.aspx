@@ -44,15 +44,21 @@
     <div class="row">
             <div class="col-sm-12">
                <div class="card">
+                   <div class="card-header justify-content-center">
+                       <span>
+                           <i class="fas fa-user-friends"></i> Usuarios
+                           <button id="btnNuevoRol" type="button" class="btn btn-sm btn-success"  style="margin-left: 30px;"><i class="fas fa-user-plus"></i> Nuevo</button>
+                       </span>
+                   </div>
                   <div class="card-body">
-                      <h4 class="m-t-0 m-b-30">Usuarios</h4>
+                      <%--<h4 class="m-t-0 m-b-30">Usuarios</h4>
                         <div class="row">
                             <div class="col-sm-2">
-                                <button id="btnNuevoRol" type="button" class="btn btn-sm btn-success"><i class="fas fa-user-plus"></i> Nuevo</button>
+                                
                             </div>
                         </div>
-                      <hr />
-                        <div class="row mt-3">
+                      <hr />--%>
+                        <div class="row">
                             <div class="col-sm-12">
                                 
                                 <table id="tbUsuario" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
@@ -74,16 +80,15 @@
                                 </table>
                             </div>
                         </div>
-                      <hr />
+                      <%--<hr />
                       <div class="hidden-print">
                           <div class="float-right">
-                              <%--<a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i></a>--%>
                               <button type="button" id="btnImprimirusu" class="btn btn-success waves-effect waves-light">
                                 <i class="fa fa-print"></i> Imprimir
                             </button>
                               <a href="#" class="btn btn-primary waves-effect waves-light">Send</a>
                           </div>
-                      </div>
+                      </div>--%>
                   </div>
                 </div>
             </div>

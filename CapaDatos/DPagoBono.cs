@@ -174,7 +174,45 @@ namespace CapaDatos
 
             return objusu;
         }
-    
+
+        public List<EPagoBono> ObtenerInfoGenera(int idPcd)
+        {
+            List<EPagoBono> rptListaBon = new List<EPagoBono>();
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("ConsulPCDKardex", con))
+                    {
+                        comando.Parameters.AddWithValue("@Idpersodisca", idPcd);
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaBon.Add(new EPagoBono()
+                                {
+                                    Idges = Convert.ToInt32(dr["Idges"]),
+                                    oEGestion = new EGestion() { Descripcion = dr["Descripcion"].ToString() },
+                                    //numero de pagos
+                                    ValorCodigo = Convert.ToInt32(dr["Pagos"]),
+                                    Monto = float.Parse(dr["Total"].ToString())
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                throw new Exception("Error al obtener los datos", ex);
+            }
+            return rptListaBon;
+        }
+
         public List<ResumenPagoBono> ObtenerResumens()
         {
             List<ResumenPagoBono> rptListaResumen = new List<ResumenPagoBono>();

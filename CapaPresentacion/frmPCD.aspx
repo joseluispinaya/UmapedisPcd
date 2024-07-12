@@ -43,8 +43,6 @@
                 </div>
                 <div class="card-body p-t-10">
                     <button id="btnListaPcd" type="button" class="btn btn-block btn-success"><i class="fas fa-align-justify"></i> Lista</button>
-                    <%--<h2 class="m-t-0 m-b-15"><i class="mdi mdi-arrow-down-bold-circle-outline text-danger m-r-10"></i><b>8952</b></h2>--%>
-                    <%--<p class="text-muted m-b-0 m-t-20"><b>48%</b> From Last 24 Hours</p>--%>
                 </div>
             </div>
         </div>
