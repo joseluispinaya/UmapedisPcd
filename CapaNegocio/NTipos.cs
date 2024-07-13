@@ -44,6 +44,17 @@ namespace CapaNegocio
         {
             return DTipos.getInstance().ObtenerGestion();
         }
+
+        public bool RegistrarAsociacion(EAsociacion asocia)
+        {
+            return DTipos.getInstance().RegistrarAsociacion(asocia);
+        }
+
+        public bool ActualizarAsociacion(EAsociacion asocia)
+        {
+            return DTipos.getInstance().ActualizarAsociacion(asocia);
+        }
+
         public List<EAsociacion> ObtenerAsociacion()
         {
             return DTipos.getInstance().ObtenerAsociacion();

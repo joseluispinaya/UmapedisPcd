@@ -30,5 +30,45 @@ namespace CapaPresentacion
                 return new Respuesta<List<EAsociacion>>() { estado = false, objeto = null };
             }
         }
+
+        [WebMethod]
+        public static RespuestaZ<bool> Guardar(EAsociacion oAsocia)
+        {
+            try
+            {
+                bool Respuesta = NTipos.getInstance().RegistrarAsociacion(oAsocia);
+                var respuesta = new RespuestaZ<bool>
+                {
+                    Estado = Respuesta,
+                    Mensage = Respuesta ? "Registrado correctamente" : "Ocurrio un error la Asociacion ya Existe",
+                    Valor = Respuesta ? "success" : "warning"
+                };
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+                return new RespuestaZ<bool> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message, Valor = "error" };
+            }
+        }
+
+        [WebMethod]
+        public static RespuestaZ<bool> Actualizar(EAsociacion oAsocia)
+        {
+            try
+            {
+                bool Respuesta = NTipos.getInstance().ActualizarAsociacion(oAsocia);
+                var respuesta = new RespuestaZ<bool>
+                {
+                    Estado = Respuesta,
+                    Mensage = Respuesta ? "Actualizado correctamente" : "Ocurrio un error la Asociacion ya Existe",
+                    Valor = Respuesta ? "success" : "warning"
+                };
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+                return new RespuestaZ<bool> { Estado = false, Mensage = "Ocurrió un error: " + ex.Message, Valor = "error" };
+            }
+        }
     }
 }

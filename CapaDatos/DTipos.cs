@@ -171,6 +171,80 @@ namespace CapaDatos
 
             return rptListaRol;
         }
+
+        //metodos para asociacion
+
+        public bool RegistrarAsociacion(EAsociacion asocia)
+        {
+            bool respuesta = false;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_RegistrarAsociacion", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@Descripcion", asocia.Descripcion);
+                        cmd.Parameters.AddWithValue("@Responsable", asocia.Responsable);
+
+                        SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        respuesta = Convert.ToBoolean(outputParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al registrar. Intente más tarde.", ex);
+            }
+
+            return respuesta;
+        }
+
+        public bool ActualizarAsociacion(EAsociacion asocia)
+        {
+            bool respuesta = false;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_ModificarAsociacion", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@Idasoci", asocia.Idasoci);
+                        cmd.Parameters.AddWithValue("@Descripcion", asocia.Descripcion);
+                        cmd.Parameters.AddWithValue("@Responsable", asocia.Responsable);
+                        cmd.Parameters.AddWithValue("@Activo", asocia.Activo);
+
+                        SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        respuesta = Convert.ToBoolean(outputParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar. Intente más tarde.", ex);
+            }
+
+            return respuesta;
+        }
         public List<EAsociacion> ObtenerAsociacion()
         {
             List<EAsociacion> rptListaRol = new List<EAsociacion>();
@@ -209,6 +283,7 @@ namespace CapaDatos
             return rptListaRol;
         }
 
+        // fin metodos asociacion
         public List<ETipoDisca> ObtenerTiposDisca()
         {
             List<ETipoDisca> rptListaRol = new List<ETipoDisca>();
