@@ -47,7 +47,8 @@ function cargarAsociacione() {
                                     <h6>asociacion</h6>
                                 </div>
                                 <h4 id="txtrespon" class="dih">${asociacion.Responsable}</h4>
-                                <button type="button" class="buttona buttona-custom background1-left-column">Empezar</button>
+                                <p>Responsable</p>
+                                <button type="button" class="buttona buttona-custom background1-left-column" data-id="${asociacion.Idasoci}">Detalle</button>
                             </div>
                         </div>
                     `;
@@ -58,50 +59,22 @@ function cargarAsociacione() {
     });
 }
 
-function cargarAsociacionerr() {
-    $.ajax({
-        type: "POST",
-        url: "frmAsociaciones.aspx/ObtenerAsociacion",
-        data: {},
-        contentType: 'application/json; charset=utf-8',
-        error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
-        },
-        success: function (data) {
-            if (data.d.estado) {
-                var asociaciones = data.d.objeto;
-                var container = $('.containera');
+// Delegación de eventos para botones dinámicos
+$(document).on('click', '.buttona', function () {
+    var asociacionId = $(this).data('id');
 
-                // Limpia el contenedor antes de agregar las nuevas tarjetas
-                container.html('');
-
-                // Itera sobre cada asociación en la lista y crea una tarjeta
-                asociaciones.forEach(function (asociacion) {
-                    var cardHtml = `
-                            <div class="carda">
-                                <div class="left-column background1-left-column">
-                                    <h6>umapedis</h6>
-                                    <h2>GAMR</h2>
-                                    <i class="fas fa-hand-point-right" aria-hidden="true"></i>
-                                </div>
-                                <div class="right-column">
-                                    <div>
-                                        <h4 id="txtasocia" class="dihe">${asociacion.Descripcion}</h4>
-                                        <h6>asociacion</h6>
-                                    </div>
-                                    <h4 id="txtrespon" class="dih">${asociacion.Responsable}</h4>
-                                    <button type="button" class="buttona background1-left-column">Empezar</button>
-                                </div>
-                            </div>
-                    `;
-                    container.append(cardHtml);
-                });
-            }
-        }
-    });
-}
+    var url = 'docAsociacionesG.aspx?id=' + asociacionId;
+    window.open(url, '', 'height=600,width=800,scrollbars=0,location=1,toolbar=0');
+    //console.log('Asociacion ID:', asociacionId);
+    // Aquí puedes agregar el código adicional que necesites para manejar el clic del botón
+});
 
 
+$('#btnInpGeneA').on('click', function () {
+    
+    var url = 'docAsociacionesG.aspx';
+    window.open(url, '', 'height=600,width=800,scrollbars=0,location=1,toolbar=0');
+})
 
 $('#btnNuevoConAso').on('click', function () {
     $('#consulRow').show();

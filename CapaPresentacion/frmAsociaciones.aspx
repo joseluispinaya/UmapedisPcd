@@ -42,11 +42,15 @@
             }
 
             .carda-custom .dih {
-                margin: 0.4rem 0;
+                /*margin: 0.4rem 0;*/
+                margin-top: 0.4rem;
+                margin-bottom: 0;
             }
 
             .carda-custom .dihe {
                 margin: 0.4rem 0;
+                padding: 0;
+                margin: 0;
             }
 
         .left-column-custom {
@@ -75,7 +79,11 @@
             justify-content: space-between;
             flex: 1;
         }
-
+        .right-column-custom p {
+            font-size: .9rem;
+            color: rgb(68, 66, 66);
+            margin: 0;
+        }
         .buttona-custom {
             border-radius: 3rem;
             box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);

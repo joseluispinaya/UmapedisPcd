@@ -27,14 +27,6 @@ namespace CapaNegocio
         public List<ERol> ObtenerRol()
         {
             return DTipos.getInstance().ObtenerRol();
-            //try
-            //{
-            //    return DTipos.getInstance().ObtenerRol();
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
         }
         public List<EMeses> ObtenerMeses()
         {
@@ -58,6 +50,36 @@ namespace CapaNegocio
         public List<EAsociacion> ObtenerAsociacion()
         {
             return DTipos.getInstance().ObtenerAsociacion();
+        }
+
+        //filtrar
+        public List<EAsociacion> AsosciconPcd()
+        {
+            List<EAsociacion> rptListaAsociCompleta = new List<EAsociacion>();
+            try
+            {
+                var Lista = DTipos.getInstance().ObtenerAsociacion();
+                var ListaPcd = DPersonasDisca.getInstance().ObtenerPersonasPcd();
+
+                foreach (var asociaconpcd in Lista)
+                {
+                    var personasEnAsociacion = ListaPcd.Where(pcd => pcd.Idasoci == asociaconpcd.Idasoci).ToList();
+
+                    rptListaAsociCompleta.Add(new EAsociacion()
+                    {
+                        Idasoci = asociaconpcd.Idasoci,
+                        Descripcion = asociaconpcd.Descripcion,
+                        Responsable = asociaconpcd.Responsable,
+                        Activo = asociaconpcd.Activo,
+                        oListaPcd = personasEnAsociacion
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener la lista completa de asociaciones", ex);
+            }
+            return rptListaAsociCompleta;
         }
         public List<ETipoDisca> ObtenerTiposDisca()
         {

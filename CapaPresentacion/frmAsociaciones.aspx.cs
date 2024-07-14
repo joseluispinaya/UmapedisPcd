@@ -19,10 +19,40 @@ namespace CapaPresentacion
         public static Respuesta<List<EAsociacion>> ObtenerAsociacion()
         {
             List<EAsociacion> Lista = NTipos.getInstance().ObtenerAsociacion();
-            //Lista = NTipos.getInstance().ObtenerRol();
 
             if (Lista != null)
             {
+                return new Respuesta<List<EAsociacion>>() { estado = true, objeto = Lista };
+            }
+            else
+            {
+                return new Respuesta<List<EAsociacion>>() { estado = false, objeto = null };
+            }
+        }
+
+        [WebMethod]
+        public static Respuesta<List<EAsociacion>> ObtenerAsociacionConPcd()
+        {
+            List<EAsociacion> Lista = NTipos.getInstance().AsosciconPcd();
+
+            if (Lista != null)
+            {
+                return new Respuesta<List<EAsociacion>>() { estado = true, objeto = Lista };
+            }
+            else
+            {
+                return new Respuesta<List<EAsociacion>>() { estado = false, objeto = null };
+            }
+        }
+        //lista detalle
+        [WebMethod]
+        public static Respuesta<List<EAsociacion>> ObtenerAsociacionConPcdId(int IdAso)
+        {
+            List<EAsociacion> Lista = NTipos.getInstance().AsosciconPcd();
+
+            if (Lista != null)
+            {
+                Lista = Lista.Where(c => c.Idasoci == IdAso).ToList();
                 return new Respuesta<List<EAsociacion>>() { estado = true, objeto = Lista };
             }
             else
