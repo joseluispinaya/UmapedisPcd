@@ -26,19 +26,19 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab-2" data-toggle="tab" href="#home-2" role="tab" aria-controls="home-2" aria-selected="false">
                                         <span class="d-block d-sm-none"><i class="fa fa-home"></i></span>
-                                        <span class="d-none d-sm-block">Reporte por Gestion</span>
+                                        <span class="d-none d-sm-block">Por Gestion</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="profile-tab-2" data-toggle="tab" href="#profile-2" role="tab" aria-controls="profile-2" aria-selected="true">
                                         <span class="d-block d-sm-none"><i class="fa fa-user"></i></span>
-                                        <span class="d-none d-sm-block">Pago Pasado</span>
+                                        <span class="d-none d-sm-block">Por Mes</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="message-tab-2" data-toggle="tab" href="#message-2" role="tab" aria-controls="message-2" aria-selected="false">
                                         <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                                        <span class="d-none d-sm-block">Detalle General</span>
+                                        <span class="d-none d-sm-block">PCD Habilitados</span>
                                     </a>
                                 </li>
                             </ul>
@@ -59,7 +59,7 @@
                                                         <div class="form-group m-l-10">
                                                             <select class="form-control form-control-sm" id="cboGestiR"></select>
                                                         </div>
-                                                        <button id="btnBuscarGes" type="button" class="btn btn-success waves-effect waves-light m-l-15">Buscar</button>
+                                                        <%--<button id="btnBuscarGes" type="button" class="btn btn-success waves-effect waves-light m-l-15">Buscar</button>--%>
                                                     </div>
                                                     <br />
                                                     <h4 id="iddetalletotre" class="m-b-10 m-t-10">Detalle pago</h4>
@@ -98,12 +98,118 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="profile-2" role="tabpanel" aria-labelledby="profile-tab-2">
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                    
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <div class="card-header bg-primary">
+                                                    <div class="form-horizontal" id="omitirhabilmes">
+                                                        <div class="form-group row m-b-0">
+                                                            <div class="col-sm-2 text-center">
+                                                                <h3 class="card-title m-0">Gestion</h3>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <select class="form-control form-control-sm" id="cboGestiRa">
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-2 text-center">
+                                                                <h3 class="card-title m-0">Mes</h3>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <select class="form-control form-control-sm" id="cboMesR">
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <button type="button" id="btnConsultarM" class="btn btn-sm btn-success">
+                                                                    <i class="fas fa-search"></i> Consultar
+                                                                </button>
+                                                                <button type="button" id="btnImprimiM" class="btn btn-sm btn-success" style="margin-left: 30px;">
+                                                                    <i class="fas fa-print"></i> Imprimir
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 id="txtdetallemes" class="m-b-15 m-t-0">Hola</h5>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+
+                                                            <table id="tbpormes" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Codigo</th>
+                                                                        <th>Monto</th>
+                                                                        <th>Fecha Pago</th>
+                                                                        <th>Nombres PCD</th>
+                                                                        <th>Nombre Cajero</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="tab-pane fade" id="message-2" role="tabpanel" aria-labelledby="message-tab-2">
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                    
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <div class="card-header bg-primary">
+                                                    <div class="form-horizontal" id="omitirhabil">
+                                                        <div class="form-group row m-b-0">
+                                                            <div class="col-sm-2">
+                                                            </div>
+                                                            <div class="col-sm-4 text-right">
+                                                                <h3 class="card-title m-0"><i class="fas fa-user"></i> Seleccione Consulta</h3>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <select class="form-control form-control-sm" id="cboEstadoBon">
+                                                                    <option value="0">Mostrar Todos PCD</option>
+                                                                    <option value="1">PCD Habilitados</option>
+                                                                    <option value="2">PCD Inhabilitados</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <button type="button" id="btnEjemploa" class="btn btn-sm btn-success">
+                                                                    <i class="fas fa-tags"></i> Imprimir
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 id="txtdetallein" class="m-b-15 m-t-0"></h5>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+
+                                                            <table id="tbpcdbosi" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Asociacion</th>
+                                                                        <th>Discapacidad</th>
+                                                                        <th>Nro CI</th>
+                                                                        <th>Nombres</th>
+                                                                        <th>Apellidos</th>
+                                                                        <th>Tutor</th>
+                                                                        <th>Estado</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

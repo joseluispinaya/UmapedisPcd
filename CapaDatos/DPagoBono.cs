@@ -308,5 +308,53 @@ namespace CapaDatos
             return rptListaResumen;
         }
 
+        public List<EPagoBono> ConsultaPagoGesMes(int Idgesti, int IdMes)
+        {
+            List<EPagoBono> rptListaBono = new List<EPagoBono>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_ConsultaMesGesBonoPCD", con))
+                    {
+                        cmd.Parameters.AddWithValue("@Idges", Idgesti);
+                        cmd.Parameters.AddWithValue("@Idmes", IdMes);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaBono.Add(new EPagoBono()
+                                {
+                                    Idbono = Convert.ToInt32(dr["Idbono"]),
+                                    Codigo = dr["Codigo"].ToString(),
+                                    Monto = float.Parse(dr["Monto"].ToString()),
+                                    oEPersonasDisca = new EPersonasDisca
+                                    {
+                                        Nombres = dr["Pcd"].ToString()
+                                    },
+                                    FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"].ToString()).ToString("dd/MM/yyyy"),
+                                    Fecha = Convert.ToDateTime(dr["FechaRegistro"]),
+                                    oUsuario = new EUsuario
+                                    {
+                                        Nombres = dr["NomAdmin"].ToString()
+                                    },
+                                    Estado = Convert.ToBoolean(dr["Estado"])
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los detalles del pago de bono", ex);
+            }
+
+            return rptListaBono;
+        }
     }
 }

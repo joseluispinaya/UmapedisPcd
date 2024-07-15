@@ -45,5 +45,10 @@ namespace CapaNegocio
         {
             return DPagoBono.getInstance().ObtenerResumen();
         }
+
+        public List<EPagoBono> ConsultaPagoGesMes(int Idgesti, int IdMes)
+        {
+            return DPagoBono.getInstance().ConsultaPagoGesMes(Idgesti, IdMes);
+        }
     }
 }
