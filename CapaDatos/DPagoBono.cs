@@ -356,5 +356,48 @@ namespace CapaDatos
 
             return rptListaBono;
         }
+
+        public List<ResponseConsultaB> DetallePagosApi(int Idpersonapcd, int Idgesti)
+        {
+            List<ResponseConsultaB> rptListaBono = new List<ResponseConsultaB>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_DetallePagoBonoPCD", con))
+                    {
+                        cmd.Parameters.AddWithValue("@Idpersodisca", Idpersonapcd);
+                        cmd.Parameters.AddWithValue("@Idges", Idgesti);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaBono.Add(new ResponseConsultaB()
+                                {
+                                    Idbono = Convert.ToInt32(dr["Idbono"]),
+                                    Idmes = Convert.ToInt32(dr["Idmes"]),
+                                    DescripcionMes = dr["Descripcion"].ToString(),
+                                    Monto = float.Parse(dr["Monto"].ToString()),
+                                    FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"].ToString()).ToString("dd/MM/yyyy"),
+                                    Fecha = Convert.ToDateTime(dr["FechaRegistro"]),
+                                    NomAdmin = dr["NomAdmin"].ToString(),
+                                    Estado = Convert.ToBoolean(dr["Estado"])
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los detalles del pago de bono", ex);
+            }
+
+            return rptListaBono;
+        }
     }
 }

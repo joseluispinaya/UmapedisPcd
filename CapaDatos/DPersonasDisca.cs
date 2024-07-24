@@ -201,5 +201,64 @@ namespace CapaDatos
 
             return rptLista;
         }
+
+        public ResponsePCD LoginPcdApp(string user, string pass)
+        {
+            ResponsePCD obj = null;
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand Comando = new SqlCommand("sp_GetLoginPCD", con))
+                    {
+                        Comando.CommandType = CommandType.StoredProcedure;
+                        Comando.Parameters.AddWithValue("@Ciperso", user);
+                        Comando.Parameters.AddWithValue("@Codcarnetdisca", pass);
+
+                        con.Open();
+                        using (SqlDataReader dr = Comando.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                obj = new ResponsePCD
+                                {
+                                    Idpersodisca = Convert.ToInt32(dr["Idpersodisca"]),
+                                    IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                                    Idasoci = Convert.ToInt32(dr["Idasoci"]),
+                                    Idtipodisca = Convert.ToInt32(dr["Idtipodisca"]),
+                                    Ciperso = dr["Ciperso"].ToString(),
+                                    Codcarnetdisca = dr["Codcarnetdisca"].ToString(),
+                                    Porsentaje = dr["Porsentaje"].ToString(),
+                                    Nombres = dr["Nombres"].ToString(),
+                                    Apellidos = dr["Apellidos"].ToString(),
+                                    Sexo = dr["Sexo"].ToString(),
+                                    Foto = dr["Foto"].ToString(),
+                                    EstadoBono = Convert.ToBoolean(dr["EstadoBono"]),
+                                    Estado = Convert.ToBoolean(dr["Estado"]),
+
+                                    DescripcionAso = dr["DescripcionAsociacion"].ToString(),
+                                    DescripcionTipo = dr["DescripcionTipodisca"].ToString(),
+
+                                    NombresTu = dr["Nombrereapoderado"].ToString(),
+                                    Ciapoderado = dr["Ciapoderado"].ToString(),
+                                    Parentesco = dr["Parentesco"].ToString(),
+                                    Celular = dr["Celular"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error en la base de datos", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error general", ex);
+            }
+
+            return obj;
+        }
     }
 }

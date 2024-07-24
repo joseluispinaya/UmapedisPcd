@@ -128,7 +128,7 @@
                                 <ul class="list-unstyled">
                                     <li><a href="frmUsuario.aspx">Usuarios</a></li>
                                     <li><a href="frmAsociaciones.aspx">Asociacion</a></li>
-                                    <li><a href="frmPCD.aspx">Personal PCD</a></li>
+                                    <li><a href="frmPCD.aspx">Registro PCD</a></li>
                                     <li><a href="frmPagoBono.aspx">Pago Bono</a></li>
                                 </ul>
                             </li>
@@ -136,8 +136,8 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i><span>Consultas </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="frmConsultasBono.aspx">Bono PCD</a></li>
-                                    <li><a href="frmReporteBono.aspx">Por Gestion</a></li>
+                                    <li><a href="frmConsultasBono.aspx">Historial PCD</a></li>
+                                    <li><a href="frmReporteBono.aspx">Bono</a></li>
                                 </ul>
                             </li>
 

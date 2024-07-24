@@ -83,7 +83,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    Panel de Consultas Bono
+    Kardex PCD
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
 <div class="row">
@@ -91,12 +91,10 @@
             <div class="card">
                 <div class="card-body">
                     <div class="form-horizontal m-b-10" id="omitirpagoo">
-
                         <div class="form-group row m-b-0">
                             <div class="col-sm-3">
-                                <h4 class="m-b-0 m-t-0">Buscar PCD</h4>
+                                <h4 class="m-b-0 m-t-0">Kardex de PCD</h4>
                             </div>
-
                             <label for="inputPassh" class="col-sm-2 control-label text-right">Ingrse CI</label>
                             <div class="col-sm-2">
                                 <input type="text" class="form-control input-sm" id="txtcipcono" name="Nro ci">
@@ -144,8 +142,6 @@
                                         </div>
                                     </div>
                                     </div>
-
-                                    
                                 </div>
                             </div>
                         </div>
@@ -186,7 +182,6 @@
                             </div>
                         </div>
 
-                        
                     </div>
                 </div>
             </div>

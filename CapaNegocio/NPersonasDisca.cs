@@ -36,5 +36,10 @@ namespace CapaNegocio
         {
             return DPersonasDisca.getInstance().ObtenerPersonasPcd();
         }
+
+        public ResponsePCD LoginPcdApp(string user, string pass)
+        {
+            return DPersonasDisca.getInstance().LoginPcdApp(user, pass);
+        }
     }
 }
