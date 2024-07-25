@@ -106,6 +106,7 @@
     <Content Include="assets\css\_menu.css" />
     <Content Include="assets\css\_pages.css" />
     <Content Include="assets\css\_responsive.css" />
+    <Content Include="assets\defaulstyle.css" />
     <Content Include="assets\fonts\fa-brands-400.svg" />
     <Content Include="assets\fonts\fa-regular-400.svg" />
     <Content Include="assets\fonts\fa-solid-900.svg" />
@@ -143,6 +144,7 @@
     <Content Include="assets\images\baner\15.jpg" />
     <Content Include="assets\images\big\img1.jpg" />
     <Content Include="assets\images\favicon.ico" />
+    <Content Include="assets\images\fondom.png" />
     <Content Include="assets\images\Isuces.jpg" />
     <Content Include="assets\images\logo_sm.png" />
     <Content Include="assets\images\logo_white_2.png" />
@@ -382,6 +384,7 @@
     <Content Include="assets\style.css" />
     <Content Include="assets\toastr\toastr.min.css" />
     <Content Include="assets\toastr\toastr.min.js" />
+    <Content Include="Default.aspx" />
     <Content Include="docAsociacionesG.aspx" />
     <Content Include="docBoleta.aspx" />
     <Content Include="frmAsociaciones.aspx" />
@@ -408,6 +411,7 @@
     <Content Include="js\IniciarSesion.js" />
     <Content Include="js\Inicio.js" />
     <Content Include="js\menuMaster.js" />
+    <Content Include="js\Redire.js" />
     <Content Include="rptPersonaPCD.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -416,6 +420,13 @@
     <Compile Include="Api\PagoBonosController.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Configuracion.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="docAsociacionesG.aspx.cs">
       <DependentUpon>docAsociacionesG.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
