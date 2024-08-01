@@ -23,10 +23,11 @@ namespace CapaPresentacion
                 List<EUsuario> Lista = NUsuario.getInstance().ObtenerUsuarios();
                 var items = Lista.FirstOrDefault(x => x.IdUsuario == IdUsuario);
 
-                Configuracion.oUsuario = items;
+                
 
                 if (items != null)
                 {
+                    Configuracion.oUsuario = items;
                     return new Respuesta<EUsuario>() { estado = true, objeto = items };
                 }
                 else

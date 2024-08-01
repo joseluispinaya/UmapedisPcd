@@ -620,6 +620,7 @@
     <Content Include="assets\scss\_responsive.scss" />
     <None Include="packages.config" />
     <Content Include="PaginaMaster.Master" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

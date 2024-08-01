@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseConsultaB.cs" />
     <Compile Include="ResponsePCD.cs" />
+    <Compile Include="ResponseUsua.cs" />
     <Compile Include="Respuesta.cs" />
     <Compile Include="RespuestaZ.cs" />
     <Compile Include="ResumenPagoBono.cs" />

@@ -302,38 +302,50 @@ namespace CapaDatos
             return respuesta;
         }
 
-        public int LoginUsuario(string Usuario, string Clave)
+        public ResponseUsua LoginUsuarioApp(string Usuario, string Clave)
         {
-            SqlConnection con = null;
-            SqlCommand cmd = null;
-            int respuesta = 0;
+            ResponseUsua obj = null;
 
             try
             {
-                con = ConexionBD.getInstance().ConexionDB();
-                cmd = new SqlCommand("usp_LoginUsuario", con);
-                cmd.CommandType = CommandType.StoredProcedure;
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand Comando = new SqlCommand("LogeoUsuaApp", con))
+                    {
+                        Comando.CommandType = CommandType.StoredProcedure;
+                        Comando.Parameters.AddWithValue("@Correo", Usuario);
+                        Comando.Parameters.AddWithValue("@Clave", Clave);
 
-                cmd.Parameters.AddWithValue("Correo", Usuario);
-                cmd.Parameters.AddWithValue("Clave", Clave);
-                cmd.Parameters.Add("IdUsuario", SqlDbType.Int).Direction = ParameterDirection.Output;
-
-                con.Open();
-
-                cmd.ExecuteNonQuery();
-
-                respuesta = Convert.ToInt32(cmd.Parameters["IdUsuario"].Value);
+                        con.Open();
+                        using (SqlDataReader dr = Comando.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                obj = new ResponseUsua
+                                {
+                                    IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                                    Nombres = dr["Nombres"].ToString(),
+                                    Apellidos = dr["Apellidos"].ToString(),
+                                    Correo = dr["Correo"].ToString(),
+                                    Foto = dr["Foto"].ToString(),
+                                    Profecion = dr["Profecion"].ToString(),
+                                    IdRol = Convert.ToInt32(dr["IdRol"]),
+                                    Estado = Convert.ToBoolean(dr["Activo"])
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error en la base de datos", ex);
             }
             catch (Exception ex)
             {
-                respuesta = 0;
-                throw ex;
+                throw new Exception("Error general", ex);
             }
-            finally
-            {
-                con.Close();
-            }
-            return respuesta;
+            return obj;
         }
     }
 }

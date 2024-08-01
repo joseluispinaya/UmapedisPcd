@@ -12,6 +12,18 @@ namespace CapaPresentacion.Api
     [RoutePrefix("api/pagobonos")]
     public class PagoBonosController : ApiController
     {
+        [HttpGet]
+        [Route("buscar/{nroci}")]
+        public IHttpActionResult Get(string nroci)
+        {
+            var obj = NPersonasDisca.getInstance().BuscarPcdApp(nroci);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return Ok(obj);
+        }
+
         [HttpPost]
         [Route("Login")]
         public IHttpActionResult InicioSession(LoginDTO loginDTO)
@@ -24,6 +36,25 @@ namespace CapaPresentacion.Api
             else
             {
                 return BadRequest("Informacion de CI o Nro Credencial incorrectos.");
+            }
+        }
+
+        [HttpPost]
+        [Route("Loginusua")]
+        public IHttpActionResult LoginUsua(LoginDTO loginDTO)
+        {
+            //string ClaveEncri = Utilidadesj.getInstance().ConvertirSha256(Clave);
+            string clavEncri = Utilidadesj.getInstance().ConvertirSha256(loginDTO.Codcarnetdisca);
+
+            var obj = NUsuario.getInstance().LoginUsuarioApp(loginDTO.Ciperso, clavEncri);
+
+            if (obj != null)
+            {
+                return Ok(obj);
+            }
+            else
+            {
+                return BadRequest("Email o contraseña incorrectos.");
             }
         }
 
