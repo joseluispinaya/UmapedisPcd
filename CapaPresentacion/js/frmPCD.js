@@ -1,5 +1,6 @@
 ﻿var table;
-
+var tablege;
+var tableDe;
 
 const videop = document.getElementById('videoapcd');
 const canvasp = document.getElementById('canvasapcd');
@@ -81,12 +82,11 @@ function dtObtenerPcd() {
 
                     return `<button class="btn btn-success btn-detalle btn-sm mr-2" title="Ver Detalle"><i class="fas fa-list"></i></button>
                             <button class="btn btn-primary btn-editar btn-sm mr-2" title="Editar PCD"><i class="fas fa-pencil-alt"></i></button>
-                            <button class="btn btn-danger btn-eliminar btn-sm mr-2" title="Eliminar PCD"><i class="fas fa-trash-alt"></i></button>
                             ${tutorButton}`;
                 },
                 "orderable": false,
                 "searchable": false,
-                "width": "150px"
+                "width": "130px"
             }
         ],
         "order": [[0, "desc"]],
@@ -172,10 +172,12 @@ function limpiarText() {
     $("#txtFotopcd").val("");
     $('#imgUsuarioPcd').attr('src', "Imagenes/Sinfotop.jpg");
     //$("#txtApellidospcd").val("");
-    //$("#txtcituto").val("");
-    //$("#txtNomTuto").val("");
-    //$("#txtParentesco").val("");
-    //$("#txtNrocel").val("");
+
+
+    $("#txtcituto").val("");
+    $("#txtNomTuto").val("");
+    $("#txtParentesco").val("");
+    $("#txtNrocel").val("");
     //$('#imgUsuarioPcd').attr('src', "Imagenes/Sinfotop.jpg");
 }
 
@@ -183,7 +185,10 @@ $('#btnListaPcd').on('click', function () {
     $('#listaRegistrosRow').show();
     $('#nuevoRegistroRow').hide();
     $('#historialpcdp').hide();
-    
+
+    //info kardex
+    $("#txtcipcdHis").val("");
+    $('#mostrarhiev').hide();
 })
 
 $('#btnNuevore').on('click', function () {
@@ -192,6 +197,9 @@ $('#btnNuevore').on('click', function () {
     $('#listaRegistrosRow').hide();
     $('#historialpcdp').hide();
 
+    //info kardex
+    $("#txtcipcdHis").val("");
+    $('#mostrarhiev').hide();
 })
 
 $('#btnKardex').on('click', function () {
@@ -250,6 +258,7 @@ $("#tbPcd tbody").on("click", ".btn-editar", function (e) {
     //window.open(url, '', 'height=600,width=800,scrollbars=0,location=1,toolbar=0');
 })
 
+// se quito por analizar
 $("#tbPcd tbody").on("click", ".btn-eliminar", function (e) {
     e.preventDefault();
     let filaSeleccionada;
@@ -304,6 +313,53 @@ $("#tbPcd tbody").on("click", ".btn-editar-tutor", function (e) {
     //$("#modalroltut").modal("show");
     //console.log(model);
 })
+
+//validar input
+
+$.fn.inputFilter = function (inputFilter) {
+    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
+        if (inputFilter(this.value) || event.key === "Backspace" || event.key === " ") {
+            this.oldValue = this.value;
+            this.oldSelectionStart = this.selectionStart;
+            this.oldSelectionEnd = this.selectionEnd;
+        } else if (this.hasOwnProperty("oldValue")) {
+            this.value = this.oldValue;
+            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+        } else {
+            this.value = "";
+        }
+    });
+};
+
+
+$("#txtcituto").inputFilter(function (value) {
+    return /^\d*$/.test(value) && value.length <= 10;
+});
+$("#txtcipcd").inputFilter(function (value) {
+    return /^\d*$/.test(value) && value.length <= 10;
+});
+$("#txtNombrespcd").inputFilter(function (value) {
+    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
+});
+$("#txtApellidospcd").inputFilter(function (value) {
+    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
+});
+$("#txtParentesco").inputFilter(function (value) {
+    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
+});
+
+$("#txtNomTuto").inputFilter(function (value) {
+    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
+});
+$("#txtNrocel").inputFilter(function (value) {
+    return /^\d*$/.test(value) && value.length <= 9;
+});
+$("#txtPorsentaje").inputFilter(function (value) {
+    return /^\d*$/.test(value) && value.length <= 2;
+});
+
+
+
 
 function obtenerDetalleTutt($idpersonal) {
     var request = {
@@ -438,10 +494,22 @@ $("#checTutor").change(function () {
     // Verificar si el checkbox está marcado
     if ($(this).is(":checked")) {
         // Si está marcado, mostrar el elemento #ext
+
+        $("#txtcituto").val("");
+        $("#txtNomTuto").val("");
+        $("#txtParentesco").val("");
+        $("#txtNrocel").val("");
+
         $("#tutorrr").show();
         isTutore = true;
     } else {
         // Si no está marcado, ocultar el elemento #ext
+
+        $("#txtcituto").val("");
+        $("#txtNomTuto").val("");
+        $("#txtParentesco").val("");
+        $("#txtNrocel").val("");
+
         $("#tutorrr").hide();
         isTutore = false;
     }
@@ -628,13 +696,131 @@ function sendDataToServer(request) {
 }
 
 $('#btnGuardarCambiospcd').on('click', function () {
-
+    //falta validar campos vacios
     registerDataAjaxOpc();
 })
 
-//buecar pcd y reporte
-$('#btnBuscarpcd').on('click', function () {
+//buecar pcd y reporte historial
+function dtBonoGeneral() {
+    // Verificar si el DataTable ya está inicializado
+    if ($.fn.DataTable.isDataTable("#tbpagoBonoGeneral")) {
+        // Destruir el DataTable existente
+        $("#tbpagoBonoGeneral").DataTable().destroy();
+        // Limpiar el contenedor del DataTable
+        $('#tbpagoBonoGeneral tbody').empty();
+    }
+    var request = { Idpcd: parseInt($("#txtidPcdbonoH").val()) }
 
+    tablege = $("#tbpagoBonoGeneral").DataTable({
+        responsive: true,
+        "ajax": {
+            "url": 'frmPagoBono.aspx/ObtenerDetalleGeneralP',
+            "type": "POST",
+            "contentType": "application/json; charset=utf-8",
+            "dataType": "json",
+            "data": function () {
+                return JSON.stringify(request);
+            },
+            "dataSrc": function (json) {
+                if (json.d.estado) {
+                    //$("#iddetalleGenera").text("Total Cobrado " + json.d.valor);
+                    return json.d.objeto;
+                } else {
+                    return [];
+                }
+            },
+            "error": function (xhr, status, error) {
+                console.error("Error al obtener los datos: ", error);
+            }
+        },
+        "columns": [
+            { "data": "Idges", "visible": false, "searchable": false },
+            { "data": "oEGestion.Descripcion" },
+            { "data": "ValorCodigo" },
+            { "data": "Monto" },
+            {
+                "defaultContent": '<button class="btn btn-success btn-verdet btn-xs" title="Ver Detalle">Detalle</button>',
+                "orderable": false,
+                "searchable": false,
+                "width": "30px"
+            }
+        ],
+        "dom": "rt",
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        }
+    });
+}
+
+$("#tbpagoBonoGeneral tbody").on("click", ".btn-verdet", function (e) {
+    e.preventDefault();
+    let filaSeleccionada;
+
+    if ($(this).closest("tr").hasClass("child")) {
+        filaSeleccionada = $(this).closest("tr").prev();
+    } else {
+        filaSeleccionada = $(this).closest("tr");
+    }
+
+    const model = tablege.row(filaSeleccionada).data();
+    var idpc = $("#txtidPcdbonoH").val();
+    dtBonoGeneralDetalles(idpc, model.Idges);
+    //var request = { Idpcd: parseInt($("#txtidPcdbono").val()) }
+})
+
+
+function dtBonoGeneralDetalles(idPcs, idges) {
+
+    if ($.fn.DataTable.isDataTable("#tbpagoBonopDett")) {
+        $("#tbpagoBonopDett").DataTable().destroy();
+        $('#tbpagoBonopDett tbody').empty();
+    }
+    var request = {
+        Idpcd: idPcs,
+        IdGest: idges
+    }
+
+    tableDe = $("#tbpagoBonopDett").DataTable({
+        responsive: true,
+        "ajax": {
+            "url": 'frmPagoBono.aspx/ObtenerDetalledeGeneral',
+            "type": "POST",
+            "contentType": "application/json; charset=utf-8",
+            "dataType": "json",
+            "data": function () {
+                return JSON.stringify(request);
+            },
+            "dataSrc": function (json) {
+                if (json.d.estado) {
+                    $("#iddetallD").text("Total Cobrado " + json.d.valor);
+                    return json.d.objeto;
+                } else {
+                    //$("#iddetallD").text("Esta persona no cobra Bono");
+                    return [];
+                }
+            },
+            "error": function (xhr, status, error) {
+                console.error("Error al obtener los datos: ", error);
+            }
+        },
+        "columns": [
+            { "data": "Idbono", "visible": false, "searchable": false },
+            { "data": "oEMeses.Descripcion" },
+            { "data": "MontoCadena" },
+            { "data": "FechaRegistro" },
+            { "data": "oUsuario.Nombres" }
+        ],
+        "dom": "rt",
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        }
+    });
+}
+
+function cargarDatosPcd() {
+
+    //$("#tbpagoBono tbody").html("");
+    //$("#cbomeesbo").html("");
     var request = {
         Ncip: $("#txtcipcdHis").val().trim()
     };
@@ -650,24 +836,64 @@ $('#btnBuscarpcd').on('click', function () {
         },
         success: function (data) {
             if (data.d.estado) {
-                //$("#lblnomcompcd").text(model.Nombres + " " + model.Apellidos);
-                $("#imghistopot").attr("src", data.d.objeto.ImageFull);
-                $("#rptname").text(data.d.objeto.Nombres);
-                $("#rptapelli").text(data.d.objeto.Apellidos);
+
+                $("#txtidPcdbonoH").val(data.d.objeto.Idpersodisca);
+                $("#imgbonotopot").attr("src", data.d.objeto.ImageFull);
+                $("#rptnamebo").text(data.d.objeto.Nombres);
+                $("#rptapellibo").text(data.d.objeto.Apellidos);
+                $("#lblcipcd").text(data.d.objeto.Ciperso);
+                $("#lblcrede").text(data.d.objeto.Codcarnetdisca);
+                $("#lblporceb").text(data.d.objeto.Porsentaje + " %");
+                $("#lblasocib").text(data.d.objeto.oAsociacion.Descripcion);
+                $("#lbltipob").text(data.d.objeto.oTipoDisca.Descripcion);
+                $("#lbltutpcd").text(data.d.objeto.oTutor.Nombres);
+
                 $('#mostrarhiev').show();
+
+                if (data.d.objeto.EstadoBono == true) {
+                    
+                    dtBonoGeneral();
+                    $("#iddetallD").text("Detalle Mes Bono");
+                } else {
+                    $("#tbpagoBonoGeneral tbody").html("");
+                    $("#tbpagoBonopDett tbody").html("");
+                    $("#iddetallD").text("Esta persona no cobra Bono");
+                    swal("Mensaje", "PCD no tiene pago de Bono.", "warning");
+                }
+
             } else {
+                $('#mostrarhiev').hide();
                 swal("Mensaje", "No se encontró el PCD.", "warning");
             }
         }
     });
+}
+
+
+$('#btnBuscarpcd').on('click', function () {
+
+
+    if ($("#txtcipcdHis").val().trim() == "") {
+        swal("Mensaje", "Ingrese el Nro Ci para Buscar", "warning");
+        return;
+    }
+
+    cargarDatosPcd();
 });
 
 $('#btnImprimirhipcde').on('click', function () {
 
+    if ($("#txtcipcdHis").val().trim() == "") {
+        swal("Mensaje", "Ingrese el Nro Ci para Reporte", "warning");
+        return;
+    }
+
     $('#ocultar').hide();
     $('#menupcd').hide();
+    $('#logomenbre').show();
     window.print();
     $('#ocultar').show();
     $('#menupcd').show();
+    $('#logomenbre').hide();
     //const espacioArri = document.getElementById('ocultar');
 });

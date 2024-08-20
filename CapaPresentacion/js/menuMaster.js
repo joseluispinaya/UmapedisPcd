@@ -29,6 +29,9 @@ function oBtenerDetalleUsuario() {
                 $("#imgUsuarioMe").attr("src", response.d.objeto.ImageFull);
                 $("#imageUserMe").attr("src", response.d.objeto.ImageFull);
                 $("#rolusuariome").append(response.d.objeto.oRol.NomRol);
+
+                updateUserRoleUI(response.d.objeto.IdRol);
+
                 //$("#rolusuario").html("<i class='fa fa-circle text-success'></i> " + response.d.objeto.oRol.Descripcion);
             } else {
                 window.location.href = 'IniciarSesion.aspx';
@@ -36,6 +39,38 @@ function oBtenerDetalleUsuario() {
 
         }
     });
+}
+
+function updateUserRoleUI(roleId) {
+    switch (roleId) {
+        case 1:
+            showAdminUI();
+            break;
+        case 3:
+            showCajeroUI();
+            break;
+        default:
+            showPromotorUI();
+            break;
+    }
+}
+
+function showAdminUI() {
+    $('#cajerDa').hide();
+    $('#promotorDa').hide();
+    $('#adminDa').show();
+}
+
+function showCajeroUI() {
+    $('#adminDa').hide();
+    $('#promotorDa').hide();
+    $('#cajerDa').show();
+}
+
+function showPromotorUI() {
+    $('#adminDa').hide();
+    $('#cajerDa').hide();
+    $('#promotorDa').show();
 }
 
 function CerrarSesion() {
@@ -50,8 +85,9 @@ function CerrarSesion() {
             console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
         },
         success: function (response) {
-            if (response.d == true) {
-                window.location.href = 'IniciarSesion.aspx';
+            if (response.d.estado) {
+                //window.location.href = 'IniciarSesion.aspx';
+                window.location.replace('Default.aspx');
             }
         }
     });

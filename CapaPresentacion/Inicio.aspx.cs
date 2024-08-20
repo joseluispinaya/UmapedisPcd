@@ -40,12 +40,21 @@ namespace CapaPresentacion
                 return new Respuesta<EUsuario>() { estado = false, objeto = null };
             }
         }
+        //[WebMethod]
+        //public static bool CerrarSesion()
+        //{
+        //    Configuracion.oUsuario = null;
+
+        //    return true;
+
+        //}
+
         [WebMethod]
-        public static bool CerrarSesion()
+        public static Respuesta<bool> CerrarSesion()
         {
             Configuracion.oUsuario = null;
 
-            return true;
+            return new Respuesta<bool>() { estado = true };
 
         }
     }

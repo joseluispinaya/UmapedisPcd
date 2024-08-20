@@ -31,6 +31,11 @@ namespace CapaPresentacion.Api
             var obj = NPersonasDisca.getInstance().LoginPcdApp(loginDTO.Ciperso, loginDTO.Codcarnetdisca);
             if (obj != null)
             {
+                if (!obj.EstadoBono)
+                {
+                    return BadRequest("Info credenciales PCD no Cobra.");
+                }
+
                 return Ok(obj);
             }
             else
@@ -50,6 +55,10 @@ namespace CapaPresentacion.Api
 
             if (obj != null)
             {
+                if (!obj.Estado)
+                {
+                    return BadRequest("Usuario Suspendido.");
+                }
                 return Ok(obj);
             }
             else

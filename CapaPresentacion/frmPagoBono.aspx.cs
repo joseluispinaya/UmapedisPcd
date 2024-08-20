@@ -209,6 +209,7 @@ namespace CapaPresentacion
             }
         }
 
+        //prueba sin usar aun
         [WebMethod]
         public static RespuestaZ<int> GuardarBonoPruebaante(EPagoBono oPersonapcd)
         {

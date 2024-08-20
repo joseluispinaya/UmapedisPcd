@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaster.Master" AutoEventWireup="true" CodeBehind="frmPCD.aspx.cs" Inherits="CapaPresentacion.frmPCD" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <%--<link href="assets/cardzero.css" rel="stylesheet"/>--%>
+    <link href="assets/cardmodi.css" rel="stylesheet"/>
     <style>
         .buttons-excel{
             color: #fff !important;
@@ -36,7 +38,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
     <div class="row" id="menupcd">
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-sm-6 col-lg-4">
             <div class="card text-center">
                 <div class="card-heading">
                     <h4 class="card-title text-muted font-weight-light mb-0">Lista de Registros</h4>
@@ -47,7 +49,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-sm-6 col-lg-4">
             <div class="card text-center">
                 <div class="card-heading">
                     <h4 class="card-title text-muted font-weight-light mb-0">Nuevo Registro</h4>
@@ -58,18 +60,8 @@
             </div>
         </div>
 
-        <div class="col-sm-6 col-lg-3">
-            <div class="card text-center">
-                <div class="card-heading">
-                    <h4 class="card-title text-muted font-weight-light mb-0">Registro sin Tutor</h4>
-                </div>
-                <div class="card-body p-t-10">
-                    <button id="btnNuevoSintuto" type="button" class="btn btn-block btn-primary"><i class="fas fa-user-plus"></i> Nuevo</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-sm-6 col-lg-4">
             <div class="card text-center">
                 <div class="card-heading">
                     <h4 class="card-title text-muted font-weight-light mb-0">Historial PCD</h4>
@@ -286,145 +278,111 @@
                             </div>
                             <div class="col-sm-5">
                                 <button id="btnBuscarpcd" type="button" class="btn btn-sm btn-success">Buscar</button>
-                                <button id="btnImprimirhipcde" type="button" class="btn btn-sm btn-primary">
+                                <button id="btnImprimirhipcde" type="button" class="btn btn-sm btn-primary" style="margin-left: 30px;">
                                     <i class="fa fa-print"></i> Imprimir
                                 </button>
                             </div>
                         </div>
                     </div>
                     <hr class="m-b-10 m-t-5" />
+
+                    <div class="row" id="logomenbre" style="display: none;">
+                        <div class="col-sm-12 text-center">
+                            <img src="assets/images/uma2.png" alt="Header Image" style="width: 100%;" />
+                            <h4 class="m-b-0 m-t-10">UNIDAD MUNICIPAL DE ATENCION A PCD</h4>
+                        </div>
+                    </div>
+                    
+
                     <div class="row" id="mostrarhiev" style="display: none;">
-                        <div class="col-sm-5">
-                            <div class="row">
-                                <!-- ========== <div class="col-md-4  offset-md-4"> ========== -->
-                                <div class="col-sm-12">
-                                    <div class="card" id="cardhi">
-                                        <div class="card-body user-card">
-                                            <div class="media-main">
-                                                <a class="float-left" href="#">
-                                                    <img id="imghistopot" class="thumb-lg rounded-circle" src="assets/images/users/avatar-2.jpg" alt="">
-                                                </a>
-                                                <div class="info pl-3">
-                                                    <h4 class="mt-3" id="rptname">Pauline I. Bird</h4>
-                                                    <p class="text-muted" id="rptapelli">Family Member</p>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="row m-b-0 m-t-20">
-                                                <div class="col-4 text-right">
-                                                    <address>
-                                                        <strong>Nro CI:</strong><br>
-                                                        <strong>Nro Cred:</strong><br>
-                                                        <strong>Porcentaje:</strong><br>
-                                                        <strong>Asociacion:</strong><br>
-                                                        <strong>Discapacidad:</strong><br>
-                                                        <strong>Tutor:</strong>
-                                                    </address>
-                                                </div>
-                                                <div class="col-8">
-                                                    <address>
-                                                        <strong>Shipped To:</strong><br>
-                                                        Kenny Rigdon<br>
-                                                        1234 Main<br>
-                                                        Apt. 4B<br>
-                                                        Springfield, ST 54321
-                                                    </address>
-                                                </div>
-                                            </div>
-                                            <%--<p class="text-muted info-text">
-                                                Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
-                                            </p>--%>
-                                            <hr>
-                                            <ul class="social-links list-inline m-b-0">
-                                                <li class="list-inline-item">
-                                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Twitter"><i class="fab fa-twitter"></i></a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="1234567890"><i class="fas fa-phone"></i></a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="@skypename"><i class="fab fa-skype"></i></a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="email@email.com"><i class="far fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
+
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-header bg-primary">
+                                    <h4 class="card-title m-0">INFORMACION DE PCD</h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center">
+                                    <input id="txtidPcdbonoH" class="model" name="Idpcdbon" value="0" type="hidden" />
+                                    <input id="txtmontoo" class="model" name="Idpn" value="250" type="hidden" />
+                                    <div class="cardui">
+                                    <div class="cardui-image">
+                                        <img src="assets/images/umapp.png" alt="">
+                                    </div>
+                                    <div class="profile-imageu">
+                                        <img id="imgbonotopot" src="assets/images/av-1.jpg" alt="">
+                                    </div>
+                                    <div class="cardui-content">
+                                        <h3 id="rptnamebo">UMAPEDIS</h3>
+                                        <p id="rptapellibo">DIRECCION DG AG</p>
+                                        <strong>Nro CI:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <label id="lblcipcd">73999544</label><br>
+                                            <strong>Nro Cred:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <label id="lblcrede">Umapedis@gmail.com</label><br>
+                                            <strong>Disca:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <label id="lblporceb">SILVI NUEVA</label><br>
+                                            <strong>Afialiado A:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <label id="lblasocib">SILVIA VILL</label><br>
+                                            <strong>Tipo:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <label id="lbltipob">SILVIA V</label><br>
+                                            <strong>Tutor:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <label id="lbltutpcd">SILVIA NUEVA</label>
+                                        
+                                    </div>
+                                    <%--<div class="iconocs">
+                                    </div>--%>
+                                </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="card">
+                                <div class="card-header bg-primary">
+                                    <h4 class="card-title m-0">Detalle Bono</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table id="tbpagoBonoGeneral" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Gestion</th>
+                                                        <th>Nro Pagos</th>
+                                                        <th>Total</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                        <!-- card-body -->
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4 id="iddetallD" class="text-center m-b-10 m-t-10">Detalle pago</h4>
+                                            <table id="tbpagoBonopDett" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Mes</th>
+                                                        <th>Monto</th>
+                                                        <th>Fecha</th>
+                                                        <th>Funcionario</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-7">
-                            <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title text-dark m-0"><strong>Detalle pago bono</strong></h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <td><strong>Gestion</strong></td>
-                                            <td class="text-center"><strong>Monto</strong></td>
-                                            <td class="text-center"><strong>Cant Pagos</strong>
-                                            </td>
-                                            <td class="text-right"><strong>Total</strong></td>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <!-- foreach ($order->lineItems as $line) or some such thing here -->
-                                        <tr>
-                                            <td>2022</td>
-                                            <td class="text-center">250 Bs</td>
-                                            <td class="text-center">8</td>
-                                            <td class="text-right">2000 Bs</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2023</td>
-                                            <td class="text-center">250 Bs</td>
-                                            <td class="text-center">8</td>
-                                            <td class="text-right">2000 Bs</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2024</td>
-                                            <td class="text-center">250 Bs</td>
-                                            <td class="text-center">8</td>
-                                            <td class="text-right">2000 Bs</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="thick-line"></td>
-                                            <td class="thick-line"></td>
-                                            <td class="thick-line text-center">
-                                                <strong>Subtotal</strong></td>
-                                            <td class="thick-line text-right">6000 Bs</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="no-line"></td>
-                                            <td class="no-line"></td>
-                                            <td class="no-line text-center">
-                                                <strong>Descuento</strong></td>
-                                            <td class="no-line text-right">0.0 Bs</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="no-line"></td>
-                                            <td class="no-line"></td>
-                                            <td class="no-line text-center">
-                                                <strong>Total</strong></td>
-                                            <td class="no-line text-right"><h4 class="m-0">6000 Bs</h4></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
 
-                            </div>
-                        </div>
-                        </div>
 
-                        
                     </div>
                 </div>
             </div>

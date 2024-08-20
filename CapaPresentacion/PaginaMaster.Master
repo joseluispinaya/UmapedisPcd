@@ -118,31 +118,107 @@
 
 
                     <div id="sidebar-menu">
-                        <ul>
+                        <!-- menu admin -->
+                        <ul id="adminDa">
                             <li>
                                 <a href="Inicio.aspx" class="waves-effect"><i class="mdi mdi-home"></i><span>Inicio <span class="badge badge-primary float-right">1</span></span></a>
                             </li>
 
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-opacity"></i><span>Modulos </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="frmUsuario.aspx">Usuarios</a></li>
-                                    <li><a href="frmAsociaciones.aspx">Asociacion</a></li>
-                                    <li><a href="frmPCD.aspx">Registro PCD</a></li>
-                                    <li><a href="frmPagoBono.aspx">Pago Bono</a></li>
-                                </ul>
+                            <li>
+                                <a href="frmUsuario.aspx" class="waves-effect"><i class="mdi mdi-account-check"></i><span>Usuarios</span></a>
+                            </li>
+
+                            <li>
+                                <a href="frmAsociaciones.aspx" class="waves-effect"><i class="mdi mdi-bank"></i><span>Asociacion</span></a>
+                            </li>
+
+                            <li>
+                                <a href="frmPCD.aspx" class="waves-effect"><i class="mdi mdi-transit-transfer"></i><span>Registro PCD</span></a>
+                            </li>
+
+                            <li>
+                                <a href="frmPagoBono.aspx" class="waves-effect"><i class="mdi mdi-square-inc-cash"></i><span>Pago Bono</span></a>
+                            </li>
+
+                            <li>
+                                <a href="frmReporteBono.aspx" class="waves-effect"><i class="mdi mdi-layers"></i><span>Reporte Bono</span></a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="waves-effect"><i class="mdi mdi-layers"></i><span>Notificaciones</span></a>
                             </li>
 
                             <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i><span>Consultas </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-magnify-plus"></i><span>Consultas </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="frmConsultasBono.aspx">Historial PCD</a></li>
-                                    <li><a href="frmReporteBono.aspx">Bono</a></li>
+                                    <li><a href="#">PCD</a></li>
+                                    <li><a href="#">Asociaciones</a></li>
+                                    <li><a href="#">Informes</a></li>
+                                    <%--<li><a href="frmReporteBono.aspx">Bono PCD</a></li>--%>
                                 </ul>
                             </li>
 
                         </ul>
+
+                        <!-- menu cajero -->
+                        <ul id="cajerDa">
+                            <li>
+                                <a href="Inicio.aspx" class="waves-effect"><i class="mdi mdi-home"></i><span>Inicio <span class="badge badge-primary float-right">1</span></span></a>
+                            </li>
+
+                            <li>
+                                <a href="frmPagoBono.aspx" class="waves-effect"><i class="mdi mdi-square-inc-cash"></i><span>Pago Bono</span></a>
+                            </li>
+
+                            <li>
+                                <a href="frmReporteBono.aspx" class="waves-effect"><i class="mdi mdi-layers"></i><span>Reporte Bono</span></a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="waves-effect"><i class="mdi mdi-layers"></i><span>Notificaciones</span></a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-magnify-plus"></i><span>Consultas </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">PCD</a></li>
+                                    <li><a href="#">Asociaciones</a></li>
+                                    <li><a href="#">Informes</a></li>
+                                    <%--<li><a href="frmReporteBono.aspx">Bono PCD</a></li>--%>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                        <!-- menu promotor -->
+                        <ul id="promotorDa">
+                            <li>
+                                <a href="Inicio.aspx" class="waves-effect"><i class="mdi mdi-home"></i><span>Inicio <span class="badge badge-primary float-right">1</span></span></a>
+                            </li>
+
+                            <li>
+                                <a href="frmReporteBono.aspx" class="waves-effect"><i class="mdi mdi-layers"></i><span>Reporte Bono</span></a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="waves-effect"><i class="mdi mdi-layers"></i><span>Notificaciones</span></a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-magnify-plus"></i><span>Consultas </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">PCD</a></li>
+                                    <li><a href="#">Asociaciones</a></li>
+                                    <li><a href="#">Informes</a></li>
+                                    <%--<li><a href="frmReporteBono.aspx">Bono PCD</a></li>--%>
+                                </ul>
+                            </li>
+
+                        </ul>
+
                     </div>
+                    
+                    
                     <div class="clearfix"></div>
                 </div>
                 <!-- end sidebarinner -->
