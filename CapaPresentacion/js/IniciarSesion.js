@@ -1,19 +1,57 @@
 ﻿
 
+$(document).ready(function () {
+
+    show();
+})
+
+
+
+function show() {
+    //document.getElementById('cap').innerHTML = "dwggwu";
+    let character = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890';
+    let com = '';
+    for (let i = 0; i < 6; i++) {
+        let store = character.charAt(Math.floor(Math.random() * character.length));
+        com = com + store;
+        //com += store;
+    }
+    $("#muestracapchap").text(com);
+    //document.getElementById('cap').innerHTML = com;
+}
+
+//$("#txtIdUsuario").text(modelo.IdUsuario);
+
+
 $('#btnIniciarSesion').on('click', function () {
 
-    //loginUsuario();
-    if ($("#username").val().trim() == "") {
-        swal("Mensaje", "Ingrese un Usuario", "warning");
+    var captchaCode = $("#capcha").val().trim(); // Elimina espacios adicionales.
+    var captchaGenerado = $("#muestracapchap").text().trim();
+
+    if ($("#username").val().trim() === "" || $("#password").val().trim() === "") {
+        swal("Mensaje", "Debe Ingrese un Correo y Contraseña", "warning");
         return;
     }
-    loginUsuarioLoad();
+
+    if (captchaCode === "") {
+        swal("Mensaje", "Debe ingresar el CAPTCHA", "warning");
+        return;
+    }
+
+    if (captchaGenerado === captchaCode) {
+        loginUsuarioLoad();
+    } else {
+        show(); // Regenera el CAPTCHA.
+        swal("Mensaje", "CAPTCHA incorrecto, intente nuevamente", "warning");
+    }
+
+    //loginUsuarioLoad();
 })
 
 $('#btnRecupe').on('click', function () {
 
     //VALIDACIONES DE CORREO
-    if ($("#cooree").val().trim() == "") {
+    if ($("#cooree").val().trim() === "") {
         swal("Mensaje", "Ingrese un Correo", "warning");
         return;
     }
@@ -27,7 +65,7 @@ function loginUsuarioLoad() {
     $.ajax({
         type: "POST",
         url: "IniciarSesion.aspx/Iniciar",
-        data: JSON.stringify({ Usuario: $("#username").val(), Clave: $("#password").val() }),
+        data: JSON.stringify({ Usuario: $("#username").val().trim(), Clave: $("#password").val().trim() }),
         dataType: "json",
         contentType: 'application/json; charset=utf-8',
         beforeSend: function () {
@@ -43,7 +81,7 @@ function loginUsuarioLoad() {
             if (response.d) {
                 window.location.href = 'Inicio.aspx';
             } else {
-                swal("oops!", "No se encontro el usuario", "warning")
+                swal("Mensaje!", "No se encontro el usuario verifique usaurio y contraseña", "warning")
             }
         }
     });
@@ -54,7 +92,7 @@ function enviaCco() {
     $.ajax({
         type: "POST",
         url: "IniciarSesion.aspx/EnviarCorreoDe",
-        data: JSON.stringify({ correo: $("#cooree").val() }),
+        data: JSON.stringify({ correo: $("#cooree").val().trim() }),
         dataType: "json",
         contentType: 'application/json; charset=utf-8',
         beforeSend: function () {
@@ -68,9 +106,10 @@ function enviaCco() {
         success: function (response) {
             $.LoadingOverlay("hide");
             if (response.d.estado) {
-                swal("Mensaje", "Se envio sms a correo", "success")
+                $("#cooree").val("");
+                swal("Mensaje", "Se envio sus credenciales a su correo", "success")
             } else {
-                swal("oops!", "Ocurrio un error intente mas tarde", "warning")
+                swal("oops!", "Ocurrio un error verifique su correo o intente mas tarde", "warning")
             }
         }
     });

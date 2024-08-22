@@ -99,6 +99,8 @@ namespace CapaPresentacion
             }
         }
 
+        
+        //meto usado para meses pasados no se toma en cuenta
         [WebMethod]
         public static Respuesta<List<EMeses>> ObtenerMesesPasa(int Idpcd)
         {
@@ -131,6 +133,7 @@ namespace CapaPresentacion
             }
         }
 
+        //se usa para combo de pago
         [WebMethod]
         public static Respuesta<List<EMeses>> ObtenerMesesFiltra(int Idpcd)
         {
@@ -174,10 +177,12 @@ namespace CapaPresentacion
         {
             try
             {
+                //quitar para poder registrar diciembre
                 if (oPersonapcd.Idmes == 12)
                 {
                     return new RespuestaZ<int> { Estado = false, Mensage = "No puede Registrar Mes de Diciembre." };
                 }
+                // fin
                 int currentYearLocal = DateTime.Now.Year;
 
                 int IdUsuario = Configuracion.oUsuario.IdUsuario;
@@ -246,6 +251,7 @@ namespace CapaPresentacion
             }
         }
 
+        // se usa en js
         [WebMethod]
         public static Respuesta<List<EPagoBono>> ObtenerDetalleGeneralP(int Idpcd)
         {
@@ -287,6 +293,8 @@ namespace CapaPresentacion
                 return new Respuesta<List<EPagoBono>>() { estado = false, objeto = null };
             }
         }
+
+        //se usa en docBoleta.aspx js
         [WebMethod]
         public static Respuesta<EPagoBono> ObtenerDetallePagoActual(int Idpcd)
         {

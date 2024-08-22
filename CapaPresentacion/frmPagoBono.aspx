@@ -175,7 +175,19 @@
                                             <div class="card">
                                                 <div class="card-body">
 
-                                                    <div class="form-inline">
+                                                    <div class="form-horizontal m-b-10">
+
+                                                        <div class="form-group row m-b-0">
+                                                            <div class="col-sm-6">
+                                                                <label class="form-control input-sm" readonly="readonly" id="lbldetalletotpasa"></label>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label class="form-control input-sm" readonly="readonly" id="lblmontobonpasa"></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <%--<div class="form-inline">
                                                         <div class="form-group">
                                                             <label class="sr-only" for="lbldetalletotpasa">Detalle</label>
                                                             <label class="form-control input-sm" readonly="readonly" id="lbldetalletotpasa"></label>
@@ -189,7 +201,7 @@
                                                             <select class="form-control form-control-sm" id="cbomeesbopasa"></select>
                                                         </div>
                                                         <button id="btnregisbonopasa" type="button" class="btn btn-success waves-effect waves-light m-l-15">Registrar Pago</button>
-                                                    </div>
+                                                    </div>--%>
 
                                                     <div class="row">
                                                         <div class="col-sm-12">

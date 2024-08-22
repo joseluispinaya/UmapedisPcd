@@ -48,7 +48,7 @@ function dtObtenerPcd() {
             { "data": "Idpersodisca", "visible": false, "searchable": false },
             {
                 "data": "ImageFull", render: function (data) {
-                    return `<img style="height:40px" src=${data} class="rounded mx-auto d-block"/>`
+                    return `<img style="width: 40px; height: 40px; border-radius: 50%;" src="${data}" class="mx-auto d-block"/>`;
                 }
             },
             { "data": "oAsociacion.Descripcion" },

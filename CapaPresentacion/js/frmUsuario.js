@@ -59,7 +59,7 @@ function dtUsuarios() {
             { "data": "IdUsuario", "visible": false, "searchable": false },
             {
                 "data": "ImageFull", render: function (data) {
-                    return `<img style="height:40px" src=${data} class="rounded mx-auto d-block"/>`
+                    return `<img style="width: 40px; height: 40px; border-radius: 50%;" src="${data}" class="mx-auto d-block"/>`;
                 }
             },
             { "data": "oRol.NomRol" },
@@ -76,11 +76,10 @@ function dtUsuarios() {
                 }
             },
             {
-                "defaultContent": '<button class="btn btn-primary btn-editar btn-sm mr-2"><i class="fas fa-pencil-alt"></i></button>' +
-                    '<button class="btn btn-danger btn-eliminar btn-sm"><i class="fas fa-trash-alt"></i></button>',
+                "defaultContent": '<button class="btn btn-primary btn-editar btn-sm mr-2"><i class="fas fa-pencil-alt"></i></button>',
                 "orderable": false,
                 "searchable": false,
-                "width": "80px"
+                "width": "50px"
             }
         ],
         "order": [[0, "desc"]],

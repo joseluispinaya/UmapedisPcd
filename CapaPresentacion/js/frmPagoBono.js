@@ -386,7 +386,10 @@ function cargarDatosPcd() {
                     $("#lbltutpcd").text(data.d.objeto.oTutor.Nombres);
                     cargarMesesFil();
                     dtListaBonoPcd();
-                    cargarMesesPasado();
+                    // ojo se quito para mes pasado
+                    //cargarMesesPasado();
+
+
                     dtListaBonoPasadoPcd();
                     dtBonoGeneral();
                     $('#mostrarbonopa').show();
@@ -505,6 +508,7 @@ $('#btnregisbonoactu').on('click', function () {
     //sendDataBono();
 });
 
+//no usamos registro bono pasado
 $('#btnregisbonopasa').on('click', function () {
 
     var request = {

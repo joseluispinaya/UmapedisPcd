@@ -147,8 +147,11 @@
     <Content Include="assets\images\favicon.ico" />
     <Content Include="assets\images\fondom.png" />
     <Content Include="assets\images\Isuces.jpg" />
+    <Content Include="assets\images\logfina.jpg" />
+    <Content Include="assets\images\loginimg.jpg" />
     <Content Include="assets\images\logo_sm.png" />
     <Content Include="assets\images\logo_white_2.png" />
+    <Content Include="assets\images\otrolo.jpg" />
     <Content Include="assets\images\restaurant.png" />
     <Content Include="assets\images\uma2.png" />
     <Content Include="assets\images\umapp.png" />
@@ -171,6 +174,7 @@
     <Content Include="assets\js\popper.min.js" />
     <Content Include="assets\js\waves.js" />
     <Content Include="assets\js\wow.min.js" />
+    <Content Include="assets\loginstilo.css" />
     <Content Include="assets\pages\calendar-init.js" />
     <Content Include="assets\pages\chartjs.init.js" />
     <Content Include="assets\pages\dashboard.js" />
@@ -380,6 +384,7 @@
     <Content Include="assets\plugins\summernote\lang\summernote-zh-TW.min.js" />
     <Content Include="assets\plugins\summernote\summernote-bs4.css" />
     <Content Include="assets\plugins\summernote\summernote-bs4.min.js" />
+    <Content Include="assets\plugins\sweetalert\sweetalert.min.js" />
     <Content Include="assets\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="assets\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="assets\style.css" />
